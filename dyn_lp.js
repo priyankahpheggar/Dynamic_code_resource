@@ -1,5 +1,5 @@
 %%[
 SET @name = "Priyanka"
 SET @msg = "Hello"
-output(Concat("Greetings", @msg, @name))
+output(Concat("Greetings ", @msg, @name))
 ]%%
