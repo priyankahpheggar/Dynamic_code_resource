@@ -1,5 +1,3 @@
 %%[
-SET @name = "Priyanka"
-SET @msg = "Hello"
-output(Concat("Greetings ", @msg," ", @name))
+output(Concat("The time is ", Now()))
 ]%%
