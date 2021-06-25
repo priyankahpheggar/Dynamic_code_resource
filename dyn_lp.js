@@ -11,7 +11,7 @@ SET @q6 = RequestParameter("Request_q6")
 
 IF (@q1 == "Behcet_disease_patient_himself" OR @q1 == "Family_Behcet_disease_patients" OR @q1 == "Other")
 AND (@q2 == "Very_helpful" OR @q2 == "Helpful" OR @q2 == "Normal" OR @q2 == "Not_so_helpful" OR @q2 == "Not_helpful") THEN
-InsertDE("Behcets_Disease_Questionnaire","q1", @q1,"q1_text", @q1_text,"q2", @q2,"q3", @q3,"q4", @q4,"q5", @q5,"q6", @q6)
+SET @msg = "Hello"
 ENDIF
 ENDIF
 ]%%
