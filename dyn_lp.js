@@ -169,7 +169,7 @@ ENDIF
   <body>
     %%[
 IF RequestParameter("submitted") == true THEN]%%
-<p style="align:center; vertical-align: middle; font-weight:bold;">Thank you for submitting</p>
+<p style="align:center; vertical-align: middle; font-weight:bold;">you for submitting</p>
 %%[ELSE]%%
     <div class="wrapper">
       <form
