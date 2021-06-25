@@ -167,11 +167,11 @@ ENDIF
     </style>
   </head>
   <body>
-    <div class="wrapper">
     %%[
 IF RequestParameter("submitted") == true THEN]%%
 Thank you for submitting
 %%[ELSE]%%
+    <div class="wrapper">
       <form
         action="%%=RequestParameter('PAGEURL')=%%"
         method="get"
@@ -382,10 +382,9 @@ Thank you for submitting
           <button type="submit">確認画面へ</button>
         </div>
       </form>
-   %%[ENDIF]%%
+  
 
     </div>
-
     <script>
       (function (a, m, i, g, o, s) {
         o = a.createElement(g);
@@ -405,6 +404,7 @@ Thank you for submitting
         _etmc.push(["trackPageView"]);
       }
     </script>
+     %%[ENDIF]%%
   </body>
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
