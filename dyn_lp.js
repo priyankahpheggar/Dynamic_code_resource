@@ -1,3 +1,23 @@
+%%[
+IF RequestParameter("submitted") == true THEN
+SET @q1 = RequestParameter("select_info")
+SET @q1_text = RequestParameter("text")
+SET @q2 = RequestParameter("online_event")
+SET @q3 = RequestParameter("reason_answer2")
+SET @q4 = RequestParameter("session")
+SET @q5 = RequestParameter("themes_future")
+SET @q6 = RequestParameter("Request_q6")
+
+
+IF (@q1 == "Behcet_disease_patient_himself" OR @q1 == "Family_Behcet_disease_patients" OR @q1 == "Other")
+AND (@q2 == "Very_helpful" OR @q2 == "Helpful" OR @q2 == "Normal" OR @q2 == "Not_so_helpful" OR @q2 == "Not_helpful") THEN
+InsertDE("Behcets_Disease_Questionnaire","q1", @q1,"q1_text", @q1_text,"q2", @q2,"q3", @q3,"q4", @q4,"q5", @q5,"q6", @q6)
+Redirect('https://cloud.amgenmail.com/behcets_disease_patient_thankyou')
+ENDIF
+ENDIF
+]%%
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -148,24 +168,11 @@
     </style>
   </head>
   <body>
-  %%[
-IF RequestParameter("submitted") == true THEN
-SET @q1 = RequestParameter("select_info")
-SET @q1_text = RequestParameter("text")
-SET @q2 = RequestParameter("online_event")
-SET @q3 = RequestParameter("reason_answer2")
-SET @q4 = RequestParameter("session")
-SET @q5 = RequestParameter("themes_future")
-SET @q6 = RequestParameter("Request_q6")
-
-
-IF (@q1 == "Behcet_disease_patient_himself" OR @q1 == "Family_Behcet_disease_patients" OR @q1 == "Other")
-AND (@q2 == "Very_helpful" OR @q2 == "Helpful" OR @q2 == "Normal" OR @q2 == "Not_so_helpful" OR @q2 == "Not_helpful") THEN
-InsertDE("Behcets_Disease_Questionnaire","q1", @q1,"q1_text", @q1_text,"q2", @q2,"q3", @q3,"q4", @q4,"q5", @q5,"q6", @q6)
-]%%
-Thank you for submitting your response
-%%[ELSE]%%
     <div class="wrapper">
+    %%[
+IF RequestParameter("submitted") == true THEN]%%
+Thank you for submitting
+%%[ELSE]%%
       <form
         action="%%=RequestParameter('PAGEURL')=%%"
         method="get"
@@ -376,13 +383,9 @@ Thank you for submitting your response
           <button type="submit">確認画面へ</button>
         </div>
       </form>
-   
+   %%[ENDIF]%%
 
     </div>
-%%[
-ENDIF
-ENDIF
-]%%
 
     <script>
       (function (a, m, i, g, o, s) {
