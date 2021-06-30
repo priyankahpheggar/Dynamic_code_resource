@@ -1,19 +1,16 @@
 <script runat="server">
-Platform.Load("core","1.1");
-var DE = "Encrypted_data_Test"
+Platform.Load("Core","1");
 try {
 
-    var ListOfOptionsDE = DataExtension.Init(DE);
-    var Rows = ListOfOptionsDE.Rows.Retrieve();
+//initiate DE using it's External Key  
+var myDE = DataExtension.Init("Encrypted_data_Test");
 
-    if (Rows.length > 0) {
-        for(var i in Rows) {
-            Write(Rows[i]+ "<br>");
-        }
-    }
+//retrieve data without filters  
+var data = myDE.Rows.Retrieve();  
 
+Write(Stringify(data));
 
-} catch(e){
- Write(Stringify(e));
+  } catch (error) {
+    Write("<br>error: " + Stringify(error));
 }
 </script>
