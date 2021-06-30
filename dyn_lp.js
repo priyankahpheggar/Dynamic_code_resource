@@ -1,17 +1,27 @@
-<script runat="server">
-Platform.Load("Core","1");
-try {
-
-//initiate DE using it's External Key  
-var myDE = DataExtension.Init("Encrypted_data_Test");
-
-//retrieve data without filters  
-var data = myDE.Rows.Retrieve();
-var x = data[0].Email;  
-
-Write(x);
-
-  } catch (error) {
-    Write("<br>error: " + Stringify(error));
-}
-</script>
+<html>
+    <head>
+    </head>
+    <body>
+        <table style= "border: 1px solid black">
+            <tr>
+                <td>FirstName</td>
+                <td>LastName</td>
+                <td>Email</td>
+              
+            </tr>
+            <script runat=server>  
+                Platform.Load("Core","1");
+                var layouts = DataExtension.Init("Encrypted_data_Test").Rows.Retrieve();
+                for (var i = 0; i < layouts.length; i++)
+                {
+                    Write("<tr>");
+                    Write("<td>" + layouts[i].FirstName + "</td>");
+                    Write("<td>" + layouts[i].LastName + "</td>");
+                    Write("<td>" + layouts[i].Email + "</td>");        
+                    Write("</tr>");
+                }
+                //Write(Stringify(layouts));
+            </script>
+        </table>
+    </body>
+</html>
