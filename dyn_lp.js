@@ -10,7 +10,7 @@
         var E_LN = Base64Decode(e_DE[i].LastName);
         var E_Email = e_DE[i].Email;        
        
-        if (E_Email == "")
+        if (E_Email == "Email")
         {
         /* d_DE.Rows.Add({FirstName:E_FN,LastName:E_LN,Email:E_Email}); */
         /* d_DE.Rows.UpsertData({"FirstName":E_FN,"LastName":E_LN,"Email":E_Email},["Email"],[E_Email]);  */
