@@ -12,6 +12,7 @@
        
         
         /* d_DE.Rows.Add({FirstName:E_FN,LastName:E_LN,Email:E_Email}); */
-        d_DE.Rows.Upsert({"FirstName":E_FN,"LastName":E_LN,"Email":E_Email},["Email"],[E_Email]);  
+        /* d_DE.Rows.UpsertData({"FirstName":E_FN,"LastName":E_LN,"Email":E_Email},["Email"],[E_Email]);  */
+        Platform.Function.UpsertData("Decryoted_data_Test", ["Email", E_Email], ["FirstName", E_FN], ["LastName","test1"])
     }
 </script>
