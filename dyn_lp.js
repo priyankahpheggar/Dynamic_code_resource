@@ -2,7 +2,7 @@
 
 Platform.Load("core", "1.1.1");
 
-var records = retrieveAllRecords("PHP_random_DE");
+var records = retrieveAllRecords("Encrypted_data_Test");
 
 Write(Stringify(records));
 
