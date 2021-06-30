@@ -12,7 +12,7 @@ function retrieveFieldNames(name) {
 
     var de = DataExtension.Init(attr[0].CustomerKey);
 
-    var fields = de.Fields.Retrieve();
+    var fields = Base64Decode(de.Fields.Retrieve());
 
     fields.sort(function (a, b) { return (a.Ordinal > b.Ordinal) ? 1 : -1 });
 
