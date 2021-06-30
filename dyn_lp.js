@@ -14,7 +14,7 @@
         /* d_DE.Rows.Add({FirstName:E_FN,LastName:E_LN,Email:E_Email}); */
         /* d_DE.Rows.UpsertData({"FirstName":E_FN,"LastName":E_LN,"Email":E_Email},["Email"],[E_Email]);  */
        var Insert_data = Platform.Function.InsertData('Decryoted_data_Test', ['Email', 'FirstName', 'LastName'],[E_Email, E_FN, E_LN]);
-       var update_data = Platform.Function.UpdateData('Decryoted_data_Test', ['Email'],[E_Email],['FirstName'], ['test1']);
+       var update_data = Platform.Function.UpdateData('Decryoted_data_Test', ['Email'],[E_Email],['FirstName', 'LastName'], ['test2', 'test3']);
 
     }
 </script>
