@@ -13,6 +13,6 @@
         
         /* d_DE.Rows.Add({FirstName:E_FN,LastName:E_LN,Email:E_Email}); */
         /* d_DE.Rows.UpsertData({"FirstName":E_FN,"LastName":E_LN,"Email":E_Email},["Email"],[E_Email]);  */
-       var upsert_data = Platform.Function.UpsertData('Decryoted_data_Test', ['Email'],[E_Email], ['FirstName'],[E_FN], ['LastName'],['test1']);
+       var Insert_data = Platform.Function.InsertData('Decryoted_data_Test', ['Email', 'FirstName', 'LastName'],[E_Email, E_FN, E_LN]);
     }
 </script>
