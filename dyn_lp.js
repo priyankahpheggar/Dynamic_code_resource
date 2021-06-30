@@ -11,7 +11,9 @@
         var E_Email = e_DE[i].Email;        
        
         
-        d_DE.Rows.Update({FirstName:"Test1",LastName:E_LN,Email:E_Email});
+        /* d_DE.Rows.Add({FirstName:E_FN,LastName:E_LN,Email:E_Email}); */
+        d_DE.Rows.Update({"FirstName":"test1"});
+
         
     }
     //Write(Stringify(layouts));
