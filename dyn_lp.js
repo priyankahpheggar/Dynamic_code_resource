@@ -12,6 +12,6 @@
        
         
         /* d_DE.Rows.Add({FirstName:E_FN,LastName:E_LN,Email:E_Email}); */
-        d_DE.Rows.Update({"FirstName":E_FN,"LastName":E_LN,"Email":E_Email},["Email"],[E_Email]);  
+        d_DE.Rows.Upsert({"FirstName":E_FN,"LastName":E_LN,"Email":E_Email},["Email"],[E_Email]);  
     }
 </script>
