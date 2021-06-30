@@ -1,152 +1,71 @@
 <script runat="server">
 
-	Platform.Load("core", "1.1");
+Platform.Load("core", "1.1.1");
 
-	var insrt = createDemoDataExtension("PHP_random_DE","Priyanka",3000);
+var records = retrieveAllRecords("PHP_random_DE");
 
-	function createDemoDataExtension(name, folder, num) {
+Write(Stringify(records));
 
-		var api = new Script.Util.WSProxy();
+function retrieveFieldNames(name) {
 
-		var fields = [
-			{
-				"Name": "Primary",
-				"FieldType": "Text",
-				"IsPrimaryKey": true,
-				"IsRequired": true,
-				"MaxLength": 50
-			},
-			{
-				"Name": "Text_with_Default",
-				"FieldType": "Text",
-				"MaxLength": 50,
-				"DefaultValue": "Hellow world"
-			},
-			{
-				"Name": "Number",
-				"FieldType": "Number"
-			},
-			{
-				"Name": "Date",
-				"FieldType": "Date"
-			},
-			{
-				"Name": "Boolean",
-				"FieldType": "Boolean",
-				"DefaultValue": false
-			},
-			{
-				"Name": "Email",
-				"FieldType": "EmailAddress"
-			},
-			{
-				"Name": "Phone",
-				"FieldType": "Phone"
-			},
-			{
-				"Name": "Decimal",
-				"FieldType": "Decimal",
-				"MaxLength": 18,
-				"Scale": 2
-			},
-			{
-				"Name": "Locale",
-				"FieldType": "Locale"
-			},
-			{
-				"Name": "Text_required",
-				"FieldType": "Text",
-				"MaxLength": 50,
-				"IsRequired": true
-			}
-		];
+    var attr = DataExtension.Retrieve({ Property: "Name", SimpleOperator: "equals", Value: name });
 
-		var conf = {
-			"CustomerKey": Platform.Function.GUID(),
-			"Name": name,
-			"Fields": fields
-		};
+    var de = DataExtension.Init(attr[0].CustomerKey);
 
-		var req = Folder.Retrieve({ Property: 'Name', SimpleOperator: 'equals', Value: folder });
+    var fields = de.Fields.Retrieve();
 
-		var catId = req[0].ID;
+    fields.sort(function (a, b) { return (a.Ordinal > b.Ordinal) ? 1 : -1 });
 
-		if (catId != null) conf["CategoryID"] = catId;
+    var out = [];
 
-		var res = api.createItem("DataExtension", conf);
+    for (k in fields) {
+        out = out.concat(fields[k].Name);
+    }
 
-		if (res["Status"] == "OK") {
+    return out;
 
-			var message = '(+) Data Extension "' + name + '" has been created';
+}
 
-			if (catId != null) message += ' in the folder "' + folder + '".'; else message += ' in the root folder.';
+function retrieveAllRecords(name) {
 
-			Write(message + "<br>");
+    var prox = new Script.Util.WSProxy();
 
-			var customerKey = res.Results[0].Object.CustomerKey;
+    var cols = retrieveFieldNames(name);
 
-			var de = DataExtension.Init(customerKey);
+    var config = {
+        name: name,
+        cols: cols
+    }
 
-			var payload = [];
+    var records = [],
+        moreData = true,
+        reqID = data = null;
 
-			for (var i = 0; i < num; i++) {
-				var obj = {};
-				for (k in fields) {
-					obj[fields[k].Name] = (fields[k].FieldType == "Text" && fields[k].IsPrimaryKey == true) ? Platform.Function.GUID() : getRandom(fields[k].FieldType);
-				}
-				payload.push(obj);
-			}
+    while (moreData) {
 
-			var addedRowCount = de.Rows.Add(payload);
+        moreData = false;
 
-			Write("(+) Rows added: " + Stringify(addedRowCount) + "<br>"); 
+        if (reqID == null) {
+            data = prox.retrieve("DataExtensionObject[" + config.name + "]", config.cols);
+        } else {
+            data = prox.getNextBatch("DataExtensionObject[" + config.name + "]", reqID);
+        }
 
-			return addedRowCount;
-
-		} else {
-			Write("(-) Something went wrong: " + Stringify(res.Results[0].StatusMessage));
-		}
-
-		function getRandom(type) {
-
-			if(type == "Decimal") return Math.floor(Math.random() * (1000 - 100) + 100) / 100;
-			if(type == "EmailAddress") return Math.floor(Math.random() * 10000000000) + "@mail.com";
-			if(type == "Boolean") return (Math.random() >= 0.5);
-			if(type == "Number") return Math.floor(Math.random() * 100);
-			if(type == "Date") return new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
-
-			if(type == "Phone") {
-				var n = "0";
-				for (var i = 0; i < 9; i++) {
-					n += Math.floor(Math.random() * 9)
-				}
-				return n;
-			}
-
-			if(type == "Locale") {
-				switch (Math.floor(Math.random() * 4)) {
-					case 0: var loc = "FR"; break;
-					case 1: var loc = "NL"; break;
-					case 2: var loc = "RU"; break;
-					case 3: var loc = "EN"; break;
-				}
-				return loc;
-			}
-
-			if(type ==  "Text") {
-				var str = "lorem ipsum dolor sit amet consectetur adipiscing elit donec vel nunc eget augue dignissim bibendum";
-				arr = str.split(" ");
-				var ctr = arr.length, temp, index;
-				while (ctr > 0) {
-					index = Math.floor(Math.random() * ctr);
-					ctr--;
-					temp = arr[ctr];
-					arr[ctr] = arr[index];
-					arr[index] = temp;
-				}
-				str = arr.join(" ");
-				return str;
-			}
-		}
-	}
+        if (data != null) {
+            moreData = data.HasMoreRows;
+            reqID = data.RequestID;
+            for (var i = 0; i < data.Results.length; i++) {
+                var result_list = data.Results[i].Properties;
+                var obj = {};
+                for (k in result_list) {
+                    var key = result_list[k].Name;
+                    var val = result_list[k].Value
+                    if (key.indexOf("_") != 0) obj[key] = val;
+                }
+                records.push(obj);
+            }
+        }
+    }
+    return records;
+}
 </script>
