@@ -68,9 +68,6 @@ if @rowCount > 0 then
     ENDIF
 ]%%
 
-<!DOCTYPE html>
-<html>
-<body>
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
   <input type="radio" name="register" value="%%=v(@DCF_code)=%%">
@@ -83,6 +80,4 @@ if @rowCount > 0 then
   <input type="submit" value="Submit">
 </form>
 
-</body>
-</html>
 
