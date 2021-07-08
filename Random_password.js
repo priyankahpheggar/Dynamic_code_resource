@@ -20,7 +20,7 @@ Platform.Load("Core","1.1.1");
     Write(psw);   
 </script>
 %%[
-IF RequestParameter("submitted") == 1 then    
+IF RequestParameter("submitted") == '1' then    
 SET @TriggeredSendExternalKey = "60349"
 SET @DCF_code = "priyanka.padmanabha@indegene.com"
 SET @register = RequestParameter('register')
