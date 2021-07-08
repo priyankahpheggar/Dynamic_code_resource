@@ -73,7 +73,7 @@ if @rowCount > 0 then
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
   <input type="radio" name="register">
-  <label>Register with this Email address</label> <input type="text" value="%%=v(@DCF_code)=%%" style="width:30%;"/><br>
+  <label>Register with this Email address</label> <input type="text" value="%%=v(@DCF_code)=%%" style="width:20%;"/><br>
   <input type="radio" name="register">
   <label>Register with another email address</label> <input type="text" name="newDCF_reg" value="%%=v(@newDCF_reg)=%%"/><br>
   <input type="radio" name="register" value="%%=v(@dont_want_to_reg)=%%">
