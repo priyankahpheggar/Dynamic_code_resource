@@ -36,12 +36,9 @@ if @rowCount > 0 then
     SET @FirstName = field(@DCF_compare,"FirstName")
     SET @LastName = field(@DCF_compare,"LastName")
     SET @DCF_code = field(@DCF_compare,"DCF_code")
-        IF @register == 'new email address' then
-        InsertDE("User_DE","DCF_code", @newDCF_reg,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
-        ELSE
-        InsertDE("User_DE","DCF_code", @DCF_code,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
-        ENDIF
         IF @register == "current email address" OR @register == "new email address" THEN
+        InsertDE("User_DE","DCF_code", (@newDCF_reg, @DCF_code),"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)   
+        
 ]%%
 <script runat="server">
                 Platform.Load("core","1.1");
@@ -58,15 +55,13 @@ if @rowCount > 0 then
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
                 var Status = TSD.Send(data.subscriber,data.attributes);
-            </script>
+</script>
 %%[
     Redirect('https://www.example.com')
-    ELSE
-    SET @msg = "dont want to register"
-    ENDIF 
+        ENDIF 
     next @i
-    ENDIF
-    ENDIF
+ENDIF
+ENDIF
 ]%%
 <!DOCTYPE html>
 <html>
