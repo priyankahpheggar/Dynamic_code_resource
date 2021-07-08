@@ -67,11 +67,13 @@ if @rowCount > 0 then
     ENDIF
     ENDIF
 ]%%
-
+<!DOCTYPE html>
+<html>
+<body>
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
   <input type="radio" name="register">
-  <label>Register with this Email address</label> <input type="text" name="DCF_code" value="%%=v(@DCF_code)=%%"/><br>
+  <label>Register with this Email address</label> <input type="text" value="%%=v(@DCF_code)=%%"/><br>
   <input type="radio" name="register">
   <label>Register with another email address</label> <input type="text" name="newDCF_reg" value="%%=v(@newDCF_reg)=%%"/><br>
   <input type="radio" name="register" value="%%=v(@dont_want_to_reg)=%%">
@@ -79,5 +81,7 @@ if @rowCount > 0 then
   <input type="hidden" name="submitted" value="1"><br>
   <input type="submit" value="Submit">
 </form>
+</body>
+</html>
 
 
