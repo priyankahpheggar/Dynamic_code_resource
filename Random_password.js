@@ -69,9 +69,6 @@ if @rowCount > 0 then
 <!DOCTYPE html>
 <html>
 <body>
-
-<h1>Display Radio Buttons</h1>
-
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
   <input type="radio" name="register" value="%%=v(@DCF_code)=%%">
