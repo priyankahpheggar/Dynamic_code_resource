@@ -76,7 +76,7 @@ if @rowCount > 0 then
   <input type="radio" name="register" value="current email address">
   <label>Register with this Email address</label> <input type="text" value="%%=v(@DCF_code)=%%" style="width:20%;"/><br>
   <input type="radio" name="register" value="new email address">
-  <label>Register with another email address</label> <input type="text" name="newDCF_reg" value="%%=v(@newDCF_reg)=%%" style="width:20%;"/><br>
+  <label>Register with another email address</label> <input type="text" name="newDCF_reg" style="width:20%;"/><br>
   <input type="radio" name="register" value="not to register">
   <label>Not want to register</label><br>
   <input type="hidden" name="submitted" value="1"><br>
