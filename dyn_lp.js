@@ -41,7 +41,7 @@ if @rowCount > 0 then
         ELSE
         InsertDE("User_DE","DCF_code", @DCF_code,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
         ENDIF
-        IF @dont_want_to_reg == "" THEN
+        IF @register == "current email address" OR @register == "new email address" THEN
 ]%%
 <script runat="server">
                 Platform.Load("core","1.1");
