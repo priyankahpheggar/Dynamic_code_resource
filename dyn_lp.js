@@ -60,6 +60,7 @@ if @rowCount > 0 then
                 var Status = TSD.Send(data.subscriber,data.attributes);
             </script>
 %%[
+    Redirect('https://www.example.com')
     ELSE
     SET @msg = "dont want to register"
     ENDIF 
