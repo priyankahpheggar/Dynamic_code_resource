@@ -36,7 +36,7 @@ if @rowCount > 0 then
     SET @FirstName = field(@DCF_compare,"FirstName")
     SET @LastName = field(@DCF_compare,"LastName")
     SET @DCF_code = field(@DCF_compare,"DCF_code")
-        IF @newDCF_reg != '' then
+        IF @register == 'new email address' then
         InsertDE("User_DE","DCF_code", @newDCF_reg,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
         ELSE
         InsertDE("User_DE","DCF_code", @DCF_code,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
@@ -73,11 +73,11 @@ if @rowCount > 0 then
 <body>
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
-  <input type="radio" name="register">
+  <input type="radio" name="register" value="current email address">
   <label>Register with this Email address</label> <input type="text" value="%%=v(@DCF_code)=%%" style="width:20%;"/><br>
-  <input type="radio" name="register">
+  <input type="radio" name="register" value="new email address">
   <label>Register with another email address</label> <input type="text" name="newDCF_reg" value="%%=v(@newDCF_reg)=%%" style="width:20%;"/><br>
-  <input type="radio" name="register" value="%%=v(@dont_want_to_reg)=%%">
+  <input type="radio" name="register" value="not to register">
   <label>Not want to register</label><br>
   <input type="hidden" name="submitted" value="1"><br>
   <input type="submit" value="Submit">
