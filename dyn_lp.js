@@ -20,9 +20,9 @@ Platform.Load("Core","1.1.1");
     Write(psw);   
 </script>
 %%[
+SET @DCF_code = "priyanka.padmanabha@indegene.com"
 IF RequestParameter("submitted") == '1' then    
 SET @TriggeredSendExternalKey = "60349"
-SET @DCF_code = "priyanka.padmanabha@indegene.com"
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
 SET @dont_want_to_reg = RequestParameter('dont_want_to_reg')
@@ -70,10 +70,10 @@ if @rowCount > 0 then
 
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
-  <input type="radio" name="register" value="%%=v(@DCF_code)=%%">
+  <input type="radio" name="register">
   <label>Register with this Email address</label> <input type="text" name="DCF_code" value="%%=v(@DCF_code)=%%"/><br>
-  <input type="radio" name="register" value="%%=v(@newDCF_reg)=%%">
-  <label>Register with another email address</label> <input type="text" name="newDCF_reg" /><br>
+  <input type="radio" name="register">
+  <label>Register with another email address</label> <input type="text" name="newDCF_reg" value="%%=v(@newDCF_reg)=%%"/><br>
   <input type="radio" name="register" value="%%=v(@dont_want_to_reg)=%%">
   <label>Not want to register</label><br>
   <input type="hidden" name="submitted" value="1"><br>
