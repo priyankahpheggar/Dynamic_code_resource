@@ -19,7 +19,7 @@ Platform.Load("Core","1.1.1");
         var decrypted_psw = psw;
         var Encrypted_psw = Base64Encode(decrypted_psw);
         var dec_psw = Base64Decode(Encrypted_psw,'UTF-8', 1);
-    Write(Encrypted_psw, "/n"); 
+    
     Write(dec_psw);  
 </script>
 %%[
