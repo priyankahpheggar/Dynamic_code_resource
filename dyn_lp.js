@@ -23,7 +23,7 @@ Platform.Load("Core","1.1.1");
   
 </script>
 %%[
-
+InsertDE("User_DE","DCF_code", "123","EmailAddress", "abc@gmail.com","FirstName", "FN","LastName", "LN","Password", "123456")
 SET @DCF_code = "D_001"
 SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
 SET @row = row(@DCF_compare,1)
