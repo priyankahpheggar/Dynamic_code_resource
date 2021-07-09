@@ -15,11 +15,10 @@ Platform.Load("Core","1.1.1");
                 psw +=  y;
                 var z = str4[Math.floor(Math.random() * str4.length)];
                 psw +=  z;
-                var psw = psw;
-                var E_psw = btoa(psw)
-                Variable.SetValue("@Password",E_psw);
             }
-    Write(psw);   
+        var decrypted_psw = psw;
+        var Encrypted_psw = btoa(decrypted_psw)
+    Write(Encrypted_psw);   
 </script>
 %%[
 SET @DCF_code = "priyanka.padmanabha@indegene.com"
