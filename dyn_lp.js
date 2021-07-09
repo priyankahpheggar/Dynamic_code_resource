@@ -24,7 +24,7 @@ Platform.Load("Core","1.1.1");
 </script>
 %%[
 
-SET @DCF_code = "D_001"
+SET @DCF_code = "D_002"
 SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
 SET @row = row(@DCF_compare,1)
 SET @FirstName = field(@row,"FirstName")
@@ -35,6 +35,10 @@ IF RequestParameter('submitted') == '1' then
 SET @TriggeredSendExternalKey = "60349"
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
+
+      if @register == "not to register" then
+      Redirect('https://www.example.com')
+      endif
 
       IF @register == "current email address" OR @register == "new email address" THEN
 
