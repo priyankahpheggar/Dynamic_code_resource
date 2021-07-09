@@ -35,10 +35,9 @@ IF RequestParameter('submitted') == '1' then
 SET @TriggeredSendExternalKey = "60349"
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
-SET @dont_want_to_reg = RequestParameter('dont_want_to_reg')
 
         IF @register == "current email address" OR @register == "new email address" THEN
-        InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", (@EmailAddress,@newDCF_reg),"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)   
+        InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)   
         
 ]%%
 <script runat="server">
