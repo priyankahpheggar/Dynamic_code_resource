@@ -17,7 +17,7 @@ Platform.Load("Core","1.1.1");
                 psw +=  z;
             }
         var decrypted_psw = psw;
-        var Encrypted_psw = btoa(decrypted_psw)
+        var Encrypted_psw = Base64Encode(decrypted_psw);
     Write(Encrypted_psw);   
 </script>
 %%[
