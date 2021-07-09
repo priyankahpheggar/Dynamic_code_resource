@@ -25,7 +25,11 @@ Platform.Load("Core","1.1.1");
 %%[
 
 SET @DCF_code = "D_001"
-
+SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
+SET @row = row(@DCF_compare,1)
+SET @FirstName = field(@row,"FirstName")
+SET @LastName = field(@row,"LastName")
+SET @EmailAddress = field(@row,"EmailAddress")
 
 IF RequestParameter('submitted') == '1' then    
 SET @TriggeredSendExternalKey = "60349"
