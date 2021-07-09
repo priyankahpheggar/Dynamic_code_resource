@@ -24,7 +24,8 @@ Platform.Load("Core","1.1.1");
 </script>
 %%[
 
-SET @DCF_code = "D_002"
+SET @DCF_code_Encrypted = "RF8wMDI="
+SET @DCF_code = Base64Decode(@DCF_code_Encrypted,'UTF-8', 1)
 SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
 SET @row = row(@DCF_compare,1)
 SET @FirstName = field(@row,"FirstName")
