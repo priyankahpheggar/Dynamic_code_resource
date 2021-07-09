@@ -16,6 +16,7 @@ Platform.Load("Core","1.1.1");
                 var z = str4[Math.floor(Math.random() * str4.length)];
                 psw +=  z;
                 var psw = btoa(psw);
+                psw += psw;
                 Variable.SetValue("@Password",psw);
             }
     Write(psw);   
