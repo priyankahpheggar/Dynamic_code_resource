@@ -1,6 +1,5 @@
 <script runat="server" type="text/javascript">
 Platform.Load("Core","1.1.1");
- try{
         var str1 = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
         var str2 = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
         var str3 = ["1","2","3","4","5","6","7","8","9","0"];
@@ -64,21 +63,11 @@ if @rowCount > 0 then
 </script>
 %%[
     Redirect('https://www.example.com')
-        ENDIF  
-          next @i
+        ENDIF 
+    next @i
 ENDIF
 ENDIF
 ]%%
-
-
-<script type="text/javascript" runat="server">
-}
-catch (e) {
-  Write("<br>AMPscript Error Message: " + e);
-}
-</script>
-
-
 <!DOCTYPE html>
 <html>
 <body>
