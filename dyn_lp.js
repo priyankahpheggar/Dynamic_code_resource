@@ -23,7 +23,7 @@ Platform.Load("Core","1.1.1");
   
 </script>
 %%[
-InsertDE("User_DE","DCF_code", "123","EmailAddress", "abc@gmail.com","FirstName", "FN","LastName", "LN","Password", "123456")
+
 SET @DCF_code = "D_001"
 SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
 SET @row = row(@DCF_compare,1)
@@ -66,7 +66,7 @@ ENDIF
 <!DOCTYPE html>
 <html>
 <body>
-<form action="%%=RequestParameter('PAGEURL')=%%" method="post">
+<form action="%%=RequestParameter('PAGEURL')=%%" method="get">
   <p>Good to register with this information?</p>
   <input type="radio" name="register" value="current email address">
   <label>Register with this Email address</label> <input type="text" value="%%=v(@EmailAddress)=%%" style="width:20%;"/><br>
