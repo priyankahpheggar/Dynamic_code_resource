@@ -51,7 +51,9 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
       InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
  
       endif
-
+        SET @DCF_compare = LookupRows("User_DE","DCF_code",@DCF_code)
+        SET @row = row(@DCF_compare,1)
+        SET @EmailAddress = field(@row,"EmailAddress")
         
 ]%%
 <script runat="server">
