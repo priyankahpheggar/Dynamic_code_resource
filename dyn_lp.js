@@ -23,7 +23,8 @@ Platform.Load("Core","1.1.1");
   
 </script>
 %%[
-SET @DCF_code = "priyanka.padmanabha@indegene.com"
+
+SET @DCF_code = "D_001"
 IF RequestParameter('submitted') == '1' then    
 SET @TriggeredSendExternalKey = "60349"
 SET @register = RequestParameter('register')
@@ -39,8 +40,9 @@ if @rowCount > 0 then
     SET @FirstName = field(@DCF_compare,"FirstName")
     SET @LastName = field(@DCF_compare,"LastName")
     SET @DCF_code = field(@DCF_compare,"DCF_code")
+    SET @EmailAddress = field(@DCF_compare,"EmailAddress")
         IF @register == "current email address" OR @register == "new email address" THEN
-        InsertDE("User_DE","DCF_code", (@newDCF_reg, @DCF_code),"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)   
+        InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)   
         
 ]%%
 <script runat="server">
@@ -52,8 +54,8 @@ if @rowCount > 0 then
                       Password: Platform.Variable.GetValue("@Password")
                   },
                     subscriber : {
-                    EmailAddress: Platform.Variable.GetValue("@DCF_code"),
-                    SubscriberKey: Platform.Variable.GetValue("@DCF_code")
+                    EmailAddress: Platform.Variable.GetValue("@EmailAddress"),
+                    SubscriberKey: Platform.Variable.GetValue("@EmailAddress")
                   }
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
@@ -72,7 +74,7 @@ ENDIF
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
   <input type="radio" name="register" value="current email address">
-  <label>Register with this Email address</label> <input type="text" value="%%=v(@DCF_code)=%%" style="width:20%;"/><br>
+  <label>Register with this Email address</label> <input type="text" value="%%=v(@EmailAddress)=%%" style="width:20%;"/><br>
   <input type="radio" name="register" value="new email address">
   <label>Register with another email address</label> <input type="text" name="newDCF_reg" style="width:20%;"/><br>
   <input type="radio" name="register" value="not to register">
