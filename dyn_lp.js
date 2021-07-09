@@ -37,13 +37,7 @@ SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
 
         IF @register == "current email address" OR @register == "new email address" THEN
-
-
-        if Empty(@newDCF_reg) or @newDCF_reg == '' or @newDCF_reg == null then
-            InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)  
-        else
-        InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @newDCF_reg,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)  
-        endif
+        InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"EmailAddress", @newDCF_reg,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)  
  
         
 ]%%
