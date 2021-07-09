@@ -18,7 +18,9 @@ Platform.Load("Core","1.1.1");
             }
         var decrypted_psw = psw;
         var Encrypted_psw = Base64Encode(decrypted_psw);
-    Write(Encrypted_psw);   
+        var dec_psw = Base64Decode(Encrypted_psw);
+    Write(Encrypted_psw); 
+    Write(dec_psw);  
 </script>
 %%[
 SET @DCF_code = "priyanka.padmanabha@indegene.com"
