@@ -31,11 +31,7 @@ SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
 SET @dont_want_to_reg = RequestParameter('dont_want_to_reg')
 SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
-SET @rowCount = rowcount(@DCF_compare)
 
-if @rowCount > 0 then
-
-  for @i = 1 to @rowCount do
     SET @row = row(@DCF_compare, @i) /* get row based on counter */
     SET @FirstName = field(@DCF_compare,"FirstName")
     SET @LastName = field(@DCF_compare,"LastName")
@@ -64,8 +60,6 @@ if @rowCount > 0 then
 %%[
     Redirect('https://www.example.com')
         ENDIF 
-    next @i
-ENDIF
 ENDIF
 ]%%
 <!DOCTYPE html>

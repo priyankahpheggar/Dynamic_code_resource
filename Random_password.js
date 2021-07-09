@@ -15,15 +15,18 @@ Platform.Load("Core","1.1.1");
                 psw +=  y;
                 var z = str4[Math.floor(Math.random() * str4.length)];
                 psw +=  z;
-                var psw = btoa(psw);
-                Variable.SetValue("@Password",psw);
             }
-    Write(psw);   
+        var decrypted_psw = psw;
+        var Encrypted_psw = Base64Encode(decrypted_psw);
+        Variable.SetValue("@Password",Encrypted_psw)
+    Write(Encrypted_psw); 
+  
 </script>
 %%[
-IF RequestParameter("submitted") == '1' then    
+
+SET @DCF_code = "D_001"
+IF RequestParameter('submitted') == '1' then    
 SET @TriggeredSendExternalKey = "60349"
-SET @DCF_code = "priyanka.padmanabha@indegene.com"
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
 SET @dont_want_to_reg = RequestParameter('dont_want_to_reg')
@@ -37,12 +40,10 @@ if @rowCount > 0 then
     SET @FirstName = field(@DCF_compare,"FirstName")
     SET @LastName = field(@DCF_compare,"LastName")
     SET @DCF_code = field(@DCF_compare,"DCF_code")
-        IF @newDCF_reg != '' then
-        InsertDE("User_DE","DCF_code", @newDCF_reg,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
-        ELSE
-        InsertDE("User_DE","DCF_code", @DCF_code,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
-        ENDIF
-        IF @dont_want_to_reg == "" THEN
+    SET @EmailAddress = field(@DCF_compare,"EmailAddress")
+        IF @register == "current email address" OR @register == "new email address" THEN
+        InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", (@EmailAddress,@newDCF_reg),"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)   
+        
 ]%%
 <script runat="server">
                 Platform.Load("core","1.1");
@@ -53,32 +54,35 @@ if @rowCount > 0 then
                       Password: Platform.Variable.GetValue("@Password")
                   },
                     subscriber : {
-                    EmailAddress: Platform.Variable.GetValue("@DCF_code"),
-                    SubscriberKey: Platform.Variable.GetValue("@DCF_code")
+                    EmailAddress: Platform.Variable.GetValue("@EmailAddress"),
+                    SubscriberKey: Platform.Variable.GetValue("@EmailAddress")
                   }
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
                 var Status = TSD.Send(data.subscriber,data.attributes);
-            </script>
+</script>
 %%[
-    ELSE
-    SET @msg = "dont want to register"
-    ENDIF 
+    Redirect('https://www.example.com')
+        ENDIF 
     next @i
-    ENDIF
-    ENDIF
+ENDIF
+ENDIF
 ]%%
-
+<!DOCTYPE html>
+<html>
+<body>
 <form action="%%=RequestParameter('PAGEURL')=%%" method="post">
   <p>Good to register with this information?</p>
-  <input type="radio" name="register" value="%%=v(@DCF_code)=%%">
-  <label>Register with this Email address</label> <input type="text" name="DCF_code" value="%%=v(@DCF_code)=%%"/><br>
-  <input type="radio" name="register" value="%%=v(@newDCF_reg)=%%">
-  <label>Register with another email address</label> <input type="text" name="newDCF_reg" /><br>
-  <input type="radio" name="register" value="%%=v(@dont_want_to_reg)=%%">
+  <input type="radio" name="register" value="current email address">
+  <label>Register with this Email address</label> <input type="text" value="%%=v(@EmailAddress)=%%" style="width:20%;"/><br>
+  <input type="radio" name="register" value="new email address">
+  <label>Register with another email address</label> <input type="text" name="newDCF_reg" style="width:20%;"/><br>
+  <input type="radio" name="register" value="not to register">
   <label>Not want to register</label><br>
   <input type="hidden" name="submitted" value="1"><br>
   <input type="submit" value="Submit">
 </form>
+</body>
+</html>
 
 
