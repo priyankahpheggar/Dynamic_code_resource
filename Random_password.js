@@ -25,24 +25,21 @@ Platform.Load("Core","1.1.1");
 %%[
 
 SET @DCF_code = "D_001"
+SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
+SET @row = row(@DCF_compare,1)
+SET @FirstName = field(@row,"FirstName")
+SET @LastName = field(@row,"LastName")
+SET @EmailAddress = field(@row,"EmailAddress")
+
 IF RequestParameter('submitted') == '1' then    
 SET @TriggeredSendExternalKey = "60349"
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
-SET @dont_want_to_reg = RequestParameter('dont_want_to_reg')
-SET @DCF_compare = LookupRows("Master_HCP_DE","DCF_code",@DCF_code)
-SET @rowCount = rowcount(@DCF_compare)
 
-if @rowCount > 0 then
+      IF @register == "current email address" OR @register == "new email address" THEN
 
-  for @i = 1 to @rowCount do
-    SET @row = row(@DCF_compare, @i) /* get row based on counter */
-    SET @FirstName = field(@DCF_compare,"FirstName")
-    SET @LastName = field(@DCF_compare,"LastName")
-    SET @DCF_code = field(@DCF_compare,"DCF_code")
-    SET @EmailAddress = field(@DCF_compare,"EmailAddress")
-        IF @register == "current email address" OR @register == "new email address" THEN
-        InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", (@EmailAddress,@newDCF_reg),"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)   
+      InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
+ 
         
 ]%%
 <script runat="server">
@@ -64,8 +61,6 @@ if @rowCount > 0 then
 %%[
     Redirect('https://www.example.com')
         ENDIF 
-    next @i
-ENDIF
 ENDIF
 ]%%
 <!DOCTYPE html>

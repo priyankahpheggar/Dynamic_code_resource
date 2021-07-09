@@ -36,7 +36,7 @@ SET @TriggeredSendExternalKey = "60349"
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
 
-        IF @register == "current email address" OR @register == "new email address" THEN
+      IF @register == "current email address" OR @register == "new email address" THEN
 
       InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
  
@@ -46,13 +46,13 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
                 Platform.Load("core","1.1");
                 var data = {
                     attributes : {
-                      FirstName: Platform.Variable.GetValue("@FirstName"),
-                      LastName: Platform.Variable.GetValue("@LastName"),
-                      Password: Platform.Variable.GetValue("@Password")
+                      FirstName: "Priyanka",
+                      LastName: "HP",
+                      Password: "123456"
                   },
                     subscriber : {
-                    EmailAddress: Platform.Variable.GetValue("@EmailAddress"),
-                    SubscriberKey: Platform.Variable.GetValue("@EmailAddress")
+                    EmailAddress: "priyanka.padmanabha@indegene.com",
+                    SubscriberKey: "priyanka.padmanabha@indegene.com"
                   }
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
