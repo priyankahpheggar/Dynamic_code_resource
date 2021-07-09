@@ -38,21 +38,29 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
 
       IF @register == "current email address" OR @register == "new email address" THEN
 
-      InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", (@EmailAddress,@newDCF_reg),"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
+      if NOT Empty(@newDCF_reg) then
+     
+      InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @newDCF_reg,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
  
+      else
+         
+      InsertDE("User_DE","DCF_code", @DCF_code,"EmailAddress", @EmailAddress,"FirstName", @FirstName,"LastName", @LastName,"Password", @Password)
+ 
+      endif
+
         
 ]%%
 <script runat="server">
                 Platform.Load("core","1.1");
                 var data = {
                     attributes : {
-                      FirstName: "Priyanka",
-                      LastName: "HP",
-                      Password: "123456"
+                      FirstName: Platform.Variable.GetValue("@FirstName"),
+                      LastName: Platform.Variable.GetValue("@LastName"),
+                      Password: Platform.Variable.GetValue("@Password")
                   },
                     subscriber : {
-                    EmailAddress: "priyanka.padmanabha@indegene.com",
-                    SubscriberKey: "priyanka.padmanabha@indegene.com"
+                    EmailAddress: Platform.Variable.GetValue("@EmailAddress"),
+                    SubscriberKey: Platform.Variable.GetValue("@EmailAddress")
                   }
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
