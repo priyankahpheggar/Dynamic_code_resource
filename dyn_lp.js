@@ -18,7 +18,7 @@ SET @EmailAddress = field(@row,"Mail3")
 endif
 
 IF RequestParameter('submitted') == '1' THEN    
-SET @TriggeredSendExternalKey = "61743"
+/* SET @TriggeredSendExternalKey = "61743" */
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
 
@@ -39,7 +39,7 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
         
 ]%%
 <script runat="server">
-                Platform.Load("core","1.1");
+                /* Platform.Load("core","1.1");
                 var newDCF_reg = variable.GetValue('@newDCF_reg');
                 var EmailAddress = variable.GetValue('@EmailAddress');
                 if(newDCF_reg !== null && newDCF_reg !== '') 
@@ -70,7 +70,7 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
                   
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
-                var Status = TSD.Send(data.subscriber,data.attributes);
+                var Status = TSD.Send(data.subscriber,data.attributes); */
 </script>
 %%[
     Redirect('https://www.example.com')
