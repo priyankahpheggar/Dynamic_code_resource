@@ -40,10 +40,10 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
 ]%%
 <script runat="server">
                 Platform.Load("core","1.1");
-                var newDCF_reg = variable.GetValue("@newDCF_reg");
-                var EmailAddress = variable.GetValue("@EmailAddress");
-                /* if(newDCF_reg !== null && newDCF_reg !== '') 
-                { */
+                var newDCF_reg = Variable.GetValue("@newDCF_reg");
+                var EmailAddress = Variable.GetValue("@EmailAddress");
+                if(newDCF_reg !== null && newDCF_reg !== '') 
+                {
                   var data = {
                     attributes : {
                       First_name: Platform.Variable.GetValue("@FirstName")
@@ -54,9 +54,9 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
                   }
                 }
                   
-                /* } */
+                }
 
-               /* else 
+               else 
                 {
                   var data = {
                     attributes : {
@@ -68,7 +68,7 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
                   }
                 }
                   
-                } */
+                }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
                 var Status = TSD.Send(data.subscriber,data.attributes);
 </script>
