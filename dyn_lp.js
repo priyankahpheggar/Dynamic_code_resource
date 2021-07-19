@@ -1,6 +1,6 @@
 %%[
-SET @dcf = "MTIzNDU2"
-SET @mail_seq = "2"
+SET @dcf = "MTIzNDU2Nw=="
+SET @mail_seq = "3"
 SET @site = "AMV"
 SET @decrypt_dcf = Base64Decode(@dcf)
 
