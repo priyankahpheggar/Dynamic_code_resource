@@ -40,8 +40,8 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
 ]%%
 <script runat="server">
                 Platform.Load("core","1.1");
-                var newDCF_reg = variable.GetValue('@newDCF_reg');
-                var EmailAddress = variable.GetValue('@EmailAddress');
+                var newDCF_reg = variable.GetValue("@newDCF_reg");
+                var EmailAddress = variable.GetValue("@EmailAddress");
                 if(newDCF_reg !== null && newDCF_reg !== '') 
                 {
                   var data = {
