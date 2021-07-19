@@ -28,14 +28,14 @@ SET @newDCF_reg = RequestParameter('newDCF_reg')
 
       IF @register == "current email address" OR @register == "new email address" THEN
 
-      /* if NOT Empty(@newDCF_reg) then
+      IF @newDCF_reg != "" THEN
      
       InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @newDCF_reg,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id)
  
-      else
+      ELSE
          
       InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @EmailAddress,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id) 
-      endif */
+      ENDIF
         
 ]%%
 <script runat="server">
