@@ -22,20 +22,20 @@ IF RequestParameter('submitted') == '1' THEN
 SET @register = RequestParameter('register')
 SET @newDCF_reg = RequestParameter('newDCF_reg')
 
-      IF @register == "not to register" THEN
+      /* IF @register == "not to register" THEN
       Redirect('https://www.example.com')
-      ENDIF
+      ENDIF */
 
       IF @register == "current email address" OR @register == "new email address" THEN
 
-      if NOT Empty(@newDCF_reg) then
+      /* if NOT Empty(@newDCF_reg) then
      
       InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @newDCF_reg,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id)
  
       else
          
       InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @EmailAddress,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id) 
-      endif
+      endif */
         
 ]%%
 <script runat="server">
