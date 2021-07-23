@@ -1,7 +1,7 @@
 %%[
     SET @emailaddr = 'priyankahp.heggar@gmail.com'
     SET @password = 'priya@1592' 
-    SET @salt = '56f4367d891f011g' 
+    SET @salt = '56f4367d891f0111' 
     SET @initVector = '4963b7334a46352623252955df21d7f3' 
     SET @encData = EncryptSymmetric(@emailaddr, "aes", @null, @password, @null, @salt, @null, @initVector) 
 
@@ -13,3 +13,8 @@ decr = %%=v(@decAES)=%%
 
 
 
+1
+10
+100
+
+1234567890
