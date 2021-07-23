@@ -1,6 +1,6 @@
 %%[
     SET @emailaddr = 'priyankahp.heggar@gmail.com'
-    SET @password = 'priya@1592' 
+    SET @password = '12354556' 
     SET @encData = EncryptSymmetric(@emailaddr, "aes", @null, @password, @null, @salt, @null, @initVector) 
 
     /* set @Decrypted_email = DecryptSymmetric(@encAES, "aes", @null, @password, @null, @salt, @null, @initVector) */
