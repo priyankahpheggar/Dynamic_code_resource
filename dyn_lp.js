@@ -1,11 +1,10 @@
 %%[
-    /* SET @emailaddr = 'priyankahp.heggar@gmail.com' */
-    SET @encData = EncryptSymmetric("priyankahp.heggar@gmail.com","AES",@null,"4963b7334a46352623252955df21d7f3",@null,"4963b7334a463526",@null,"4963b7334a463526")
-    
+    SET @emailaddr = 'priyankahp.heggar@gmail.com'
+    SET @encrypt_data = Base64Encode(@emailaddr)
+    SET @decrypt_data = Base64Decode(@encrypt_data,'UTF-8', 1)
 ]%%
-
-encr = %%=v(@encData)=%%<br/>
-decr = %%=v(@decAES)=%%
+encrypted_data = %%=v(@encrypt_data)=%%<br/>
+decrypt_data = %%=v(@decrypt_data)=%%
 
 
 
