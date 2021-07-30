@@ -1,7 +1,7 @@
 %%[
-SET @dcf = RequestParameter('dcf')
-SET @mail_seq = RequestParameter('mail_seq')
-SET @site = RequestParameter('site')
+SET @dcf = "MTIzNDU="
+SET @mail_seq = "1"
+SET @site = "AMV"
 SET @TokenStatus = "True"
 SET @decrypt_dcf = Base64Decode(@dcf)
 
