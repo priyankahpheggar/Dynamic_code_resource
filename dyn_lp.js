@@ -30,11 +30,11 @@ SET @new_email_reg = RequestParameter('email_Id')
       IF @register == "Register_member_email_address" OR @register == "Register_member_another_emailaddress" THEN
       if NOT Empty(@new_email_reg) then
      
-      InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @new_email_reg,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id)
+      InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @new_email_reg,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id,"TokenStatus", @TokenStatus)
  
       else
          
-      InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @EmailAddress,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id) 
+      InsertDE("DE_MASTER_AMOVIG","AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @EmailAddress,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id,"TokenStatus", @TokenStatus) 
       endif
         
 ]%%
