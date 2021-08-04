@@ -1,7 +1,4 @@
-<script runat="server">
-Platform.Load("Core","1.1.1");
-try{
-</script>
+
 %%[
 SET @dcf = "MTIzNDU="
 SET @mail_seq = "1"
@@ -632,11 +629,4 @@ ENDIF
 
 </script>
 
-
 </html>
-
-<script runat="server">
-}catch(e){
- Write(Stringify(e));
-}
-</script>
