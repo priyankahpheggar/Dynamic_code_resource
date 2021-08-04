@@ -1,4 +1,7 @@
-
+<script runat="server">
+Platform.Load("Core","1.1.1");
+try{
+</script>
 %%[
 SET @dcf = "MTIzNDU="
 SET @mail_seq = "1"
@@ -40,6 +43,13 @@ SET @new_email_reg = RequestParameter('email_Id')
       endif
         
 ]%%
+
+<script runat="server">
+}catch(e){
+ Write(Stringify(e));
+}
+</script>
+
 <script runat="server">
                 Platform.Load("core","1.1");
                 var new_email_reg = variable.GetValue('@new_email_reg');
