@@ -48,8 +48,8 @@ SET @new_email_reg = RequestParameter('email_Id')
                 var new_email_reg = variable.GetValue('@new_email_reg');
                 var EmailAddress = variable.GetValue('@EmailAddress');
                 var data = {};
-                Write("new email = " + new_email_reg);
-                Write("nEmailAddress = " + EmailAddress);
+                Write(new_email_reg);
+                Write(EmailAddress);
                 /* if(new_email_reg != null && new_email_reg != '') 
                 {
                   var data = {
@@ -79,7 +79,7 @@ SET @new_email_reg = RequestParameter('email_Id')
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
                 var Status = TSD.Send(data.subscriber,data.attributes);
-</script> */
+</script> 
 %%[
     Redirect('https://cloud.amgenmail.com/aimovig_thankyou')
         ENDIF 
