@@ -552,7 +552,7 @@ ENDIF
       return result;
     }
     var issubmitted=false;
-    /* $('#save_Form').click(function () {
+    $('#save_Form').click(function () {
       //debugger;
       issubmitted=true
       // console.log($('#Register_member_email_address').is(':checked'))
@@ -565,7 +565,7 @@ ENDIF
       } else {
         return true;
       }
-    }); */
+    });
 
     $("#register").click(function () {
       $(".sub-list").show();
