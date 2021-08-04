@@ -48,7 +48,7 @@ SET @new_email_reg = RequestParameter('email_Id')
                 var new_email_reg = variable.GetValue('@new_email_reg');
                 var EmailAddress = variable.GetValue('@EmailAddress');
                 var data = {};
-                if(new_email_reg !== null && new_email_reg !== '') 
+                if(new_email_reg != null && new_email_reg != '') 
                 {
                   var data = {
                     attributes :  {
