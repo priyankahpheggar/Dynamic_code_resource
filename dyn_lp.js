@@ -47,7 +47,6 @@ SET @new_email_reg = RequestParameter('email_Id')
                 Platform.Load("core","1.1");
                 var new_email_reg = Variable.GetValue('@new_email_reg');
                 var EmailAddress = Variable.GetValue('@EmailAddress');
-                var data = {};
                 if(new_email_reg != null && new_email_reg != '') 
                 {
                   var data = {
