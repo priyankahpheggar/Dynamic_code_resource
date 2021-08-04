@@ -560,6 +560,7 @@ ENDIF
         if (!validateFields()) {
           //debugger;
           this.preventDefault;
+          console.log('lofers');
           return false;
         }
       } else {
