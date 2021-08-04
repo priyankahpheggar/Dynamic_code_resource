@@ -21,6 +21,7 @@ endif
 IF RequestParameter('submitted') == '1' THEN    
 SET @TriggeredSendExternalKey = "61743"
 SET @register = RequestParameter('select_info')
+Output(concat(@register))
 SET @new_email_reg = RequestParameter('email_Id')
 
       IF @register == "not_register_member" THEN
