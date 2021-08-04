@@ -44,11 +44,7 @@ SET @new_email_reg = RequestParameter('email_Id')
         
 ]%%
 
-<script runat="server">
-}catch(e){
- Write(Stringify(e));
-}
-</script>
+
 
 <script runat="server">
                 Platform.Load("core","1.1");
@@ -639,4 +635,8 @@ ENDIF
 
 </html>
 
-
+<script runat="server">
+}catch(e){
+ Write(Stringify(e));
+}
+</script>
