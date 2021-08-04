@@ -43,31 +43,32 @@ SET @new_email_reg = RequestParameter('email_Id')
                 Platform.Load("core","1.1");
                 var new_email_reg = variable.GetValue('@new_email_reg');
                 var EmailAddress = variable.GetValue('@EmailAddress');
+                var data = {};
                 if(new_email_reg !== null && new_email_reg !== '') 
                 {
                   var data = {
-                    attributes : {
-                      First_name: 'priya'
-                  },
+                    attributes :  {
+                      First_name: Platform.Variable.GetValue("@FirstName")
+                                  },
                     subscriber : {
-                    EmailAddress: 'priyanka.padmanabha@indegene.com',
-                    SubscriberKey: 'priyanka.padmanabha@indegene.com'
-                  }
-                }
+                    EmailAddress: new_email_reg,
+                    SubscriberKey: new_email_reg
+                                  }
+                              }
                   
                 }
 
                else 
                 {
-                  var data = {
-                    attributes : {
-                      First_name: 'Pinky'
-                  },
-                    subscriber : {
-                    EmailAddress: 'priyanka.padmanabha@indegene.com',
-                    SubscriberKey: 'priyanka.padmanabha@indegene.com'
-                  }
-                }
+                  var data =  {
+                    attributes :  {
+                      First_name: Platform.Variable.GetValue("@FirstName")
+                                  },
+                    subscriber :  {
+                    EmailAddress: EmailAddress,
+                    SubscriberKey: EmailAddress
+                                  }
+                              }
                   
                 }
                 var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
