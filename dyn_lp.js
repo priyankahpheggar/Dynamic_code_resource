@@ -39,7 +39,40 @@ SET @new_email_reg = RequestParameter('email_Id')
       endif
         
 ]%%
+<script runat="server">
+                Platform.Load("core","1.1");
+                var new_email_reg = variable.GetValue('@new_email_reg');
+                var EmailAddress = variable.GetValue('@EmailAddress');
+                if(new_email_reg !== null && new_email_reg !== '') 
+                {
+                  var data = {
+                    attributes : {
+                      First_name: 'priya'
+                  },
+                    subscriber : {
+                    EmailAddress: 'priyanka.padmanabha@indegene.com',
+                    SubscriberKey: 'priyanka.padmanabha@indegene.com'
+                  }
+                }
+                  
+                }
 
+               else 
+                {
+                  var data = {
+                    attributes : {
+                      First_name: 'Pinky'
+                  },
+                    subscriber : {
+                    EmailAddress: 'priyanka.padmanabha@indegene.com',
+                    SubscriberKey: 'priyanka.padmanabha@indegene.com'
+                  }
+                }
+                  
+                }
+                var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
+                var Status = TSD.Send(data.subscriber,data.attributes);
+</script>
 %%[
     Redirect('https://cloud.amgenmail.com/aimovig_thankyou')
         ENDIF 
