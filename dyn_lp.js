@@ -45,7 +45,7 @@ SET @new_email_reg = RequestParameter('email_Id')
         
 ]%%
 <script runat="server">
-                Platform.Load("core","1.1");
+                
                 var new_email_reg = variable.GetValue('@new_email_reg');
                 var EmailAddress = variable.GetValue('@EmailAddress');
                 var data = {};
