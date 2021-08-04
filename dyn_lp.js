@@ -1,7 +1,3 @@
-<script runat="server">
-Platform.Load("Core","1.1.1");
-try{
-</script>
 
 %%[
 SET @dcf = "MTIzNDU="
@@ -44,15 +40,8 @@ SET @new_email_reg = RequestParameter('email_Id')
       endif
         
 ]%%
-
 <script runat="server">
-}catch(e){
- Write(Stringify(e));
-}
-</script>
-
-<script runat="server">
-                
+                Platform.Load("core","1.1");
                 var new_email_reg = variable.GetValue('@new_email_reg');
                 var EmailAddress = variable.GetValue('@EmailAddress');
                 var data = {};
@@ -91,10 +80,6 @@ SET @new_email_reg = RequestParameter('email_Id')
         ENDIF 
 ENDIF
 ]%%
-
-
-
-
 <!DOCTYPE html>
 <html>
 
