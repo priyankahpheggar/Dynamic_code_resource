@@ -44,6 +44,13 @@ SET @new_email_reg = RequestParameter('email_Id')
       endif
         
 ]%%
+
+<script runat="server">
+}catch(e){
+ Write(Stringify(e));
+}
+</script>
+
 <script runat="server">
                 
                 var new_email_reg = variable.GetValue('@new_email_reg');
@@ -86,11 +93,7 @@ ENDIF
 ]%%
 
 
-<script runat="server">
-}catch(e){
- Write(Stringify(e));
-}
-</script>
+
 
 <!DOCTYPE html>
 <html>
