@@ -651,7 +651,7 @@ ENDIF
     issubmitted = true;
 
 // script for not to register
-if (!$("#not_register_member").is(":checked")) {
+if ($("#not_register_member").is(":checked")) {
      return true;
     }
 
