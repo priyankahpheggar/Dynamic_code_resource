@@ -645,7 +645,7 @@ ENDIF
 
    var issubmitted = false;
 
-  /* $("#save_Form").click(function () {
+  $("#save_Form").click(function () {
     issubmitted = true;
     if (!$("#Register_member_email_address").is(":checked")) {
      if (!validateFields()) {
@@ -656,7 +656,7 @@ ENDIF
     } else {
      return true;
     }
-   }); */
+   });
 
    $("#register").click(function () {
     $(".sub-list").show();
