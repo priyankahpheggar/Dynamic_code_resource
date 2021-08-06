@@ -564,10 +564,7 @@ ENDIF
    function validateFields() {
     var result = true;
 
-    
-      var $not_register_member = $("#not_register_member");
-      var not_register_member = $not_register_member.val().trim().toLowerCase();
-
+  
 
     var $emailId = $("#email_Id");
     var enteredEmailId = $emailId.val().trim().toLowerCase();
@@ -645,11 +642,17 @@ ENDIF
      return result;
     }
 
+    
+var $not_register_member = $("#not_register_member");
+      var not_register_member = $not_register_member.val().trim().toLowerCase();
+
+      if (not_register_member === "not_register_member") 
+      {
+        return true;
+      }
 
 
-      if ($("#not_register_member").prop("checked")) {
-   return true;
-}
+
     return result;
    }
 
