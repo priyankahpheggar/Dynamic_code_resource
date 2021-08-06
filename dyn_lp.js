@@ -568,7 +568,7 @@ ENDIF
       var $not_register_member = $("#not_register_member");
       var not_register_member = $not_register_member.val().trim().toLowerCase();
 
-      if (not_register_member !== "") 
+      if (not_register_member === "not_register_member") 
       {
         return true;
       }
