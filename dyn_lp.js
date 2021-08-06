@@ -1,3 +1,83 @@
+%%[
+SET @dcf = "MTIzNDU="
+SET @mail_seq = "1"
+SET @site = "AMV"
+SET @TokenStatus = "True"
+SET @decrypt_dcf = Base64Decode(@dcf)
+
+SET @dcf_compare = LookupRows("MASTER_Account","AABP_DCF_Doctor_Code",@decrypt_dcf)
+SET @row = row(@dcf_compare,1)
+SET @FirstName = field(@row,"First_name")
+SET @Amgen_id = field(@row,"Amgen_id")
+SET @Account_id = field(@row,"Account_id")
+IF @mail_seq == 1 THEN
+SET @EmailAddress = field(@row,"Mail")    
+elseif @mail_seq == 2 THEN
+SET @EmailAddress = field(@row,"Mail2")  
+else
+SET @EmailAddress = field(@row,"Mail3")  
+endif
+
+IF RequestParameter('submitted') == '1' THEN    
+SET @TriggeredSendExternalKey = "56740"
+SET @register = RequestParameter('select_info')
+SET @new_email_reg = RequestParameter('email_Id')
+
+      IF @register == "not_register_member" THEN
+      Redirect('https://www.aimovig.jp/')
+      ENDIF
+
+      IF @register == "Register_member_email_address" OR @register == "Register_member_another_emailaddress" THEN
+      if NOT Empty(@new_email_reg) then
+     
+      UpsertDE("DE_MASTER_AMOVIG",1,"AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @new_email_reg,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id,"TokenStatus", @TokenStatus)
+ 
+      else
+         
+      UpsertDE("DE_MASTER_AMOVIG",1,"AABP_DCF_Doctor_Code", @decrypt_dcf,"Login_id", @EmailAddress,"First_name", @FirstName,"Amgen_id", @Amgen_id,"Account_id", @Account_id,"TokenStatus", @TokenStatus) 
+      endif
+        
+]%%
+
+<script runat="server">
+                Platform.Load("core","1.1");
+                var new_email_reg = Variable.GetValue('@new_email_reg');
+                var EmailAddress = Variable.GetValue('@EmailAddress');
+                if(new_email_reg != null && new_email_reg != '') 
+                {
+                  var data = {
+                    attributes :  {
+                      FirstName: Platform.Variable.GetValue("@FirstName")
+                                  },
+                    subscriber : {
+                    EmailAddress: new_email_reg,
+                    SubscriberKey: new_email_reg
+                                  }
+                              }
+                  
+                }
+
+               else 
+                {
+                  var data =  {
+                    attributes :  {
+                      FirstName: Platform.Variable.GetValue("@FirstName")
+                                  },
+                    subscriber :  {
+                    EmailAddress: EmailAddress,
+                    SubscriberKey: EmailAddress
+                                  }
+                              }
+                  
+                }
+                var TSD = TriggeredSend.Init(Platform.Variable.GetValue("@TriggeredSendExternalKey"));
+                var Status = TSD.Send(data.subscriber,data.attributes);
+</script>
+%%[
+    Redirect('https://cloud.amgenmail.com/aimovig_thankyou')
+        ENDIF 
+ENDIF
+]%%
 
 <!DOCTYPE html>
 <html>
@@ -359,8 +439,8 @@
   </div>
   <div class="wrapper">
    <form
-    action="https://www.example.com"
-    method="get"
+    action="%%=RequestParameter('PAGEURL')=%%"
+    method="post"
     name="registration"
     accept-charset="utf-8"
     id="registration-form"
@@ -565,7 +645,7 @@
 
    var issubmitted = false;
 
-  $("#save_Form").click(function () {
+  /* $("#save_Form").click(function () {
     issubmitted = true;
     if (!$("#Register_member_email_address").is(":checked")) {
      if (!validateFields()) {
@@ -576,7 +656,7 @@
     } else {
      return true;
     }
-   });
+   }); */
 
    $("#register").click(function () {
     $(".sub-list").show();
