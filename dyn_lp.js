@@ -642,17 +642,6 @@ ENDIF
      return result;
     }
 
-    
-var $not_register_member = $("#not_register_member");
-      var not_register_member = $not_register_member.val().trim().toLowerCase();
-
-      if (not_register_member === "not_register_member") 
-      {
-        return true;
-      }
-
-
-
     return result;
    }
 
@@ -660,6 +649,12 @@ var $not_register_member = $("#not_register_member");
 
   $("#save_Form").click(function () {
     issubmitted = true;
+
+// script for not to register
+if (!$("#not_register_member").is(":checked")) {
+     return true;
+    }
+
     if (!$("#Register_member_email_address").is(":checked")) {
      if (!validateFields()) {
       //debugger;
