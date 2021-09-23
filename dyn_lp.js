@@ -15,8 +15,7 @@ if (jsonObj.length > 0) {
 
   for (var i = 0; i < jsonObj.length; i++ ) {
 
-      var item = jsonObj[i];
-Write("found")
+      Write("found")
   </script> 
 
 <script>
