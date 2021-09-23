@@ -18,7 +18,9 @@ if (products.length > 0) {
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
 </script>
 
-      <br>OrderId = %%=v(@OrderId)=%%  ||  Quantity = %%=v(@Quantity)=%%
+      <div>
+  資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
+  </div>
 
 <script runat="server">
   }
