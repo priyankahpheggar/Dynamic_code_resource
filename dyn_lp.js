@@ -1,1 +1,1 @@
-%%[RequestParameter('json')]%%
+%%=RequestParameter('json')=%%
