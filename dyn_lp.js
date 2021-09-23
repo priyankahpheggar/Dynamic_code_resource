@@ -1,1 +1,1 @@
-%%=Now()=%%
+%%=RequestParameter('ProductID')=%%
