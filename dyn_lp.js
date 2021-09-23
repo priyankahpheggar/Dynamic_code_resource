@@ -12,7 +12,15 @@ var json = Platform.Request.GetPostData();
 var jsonObj = Platform.Function.ParseJSON(json);
 
 if (jsonObj.length > 0) {
-Write("products found")
+
+  for (var i = 0; i < jsonObj.length; i++ ) {
+
+      var item = jsonObj[i];
+Write(item['OrderId'])
+  </script> 
+
+<script>
+  }
 
 } else {
 
