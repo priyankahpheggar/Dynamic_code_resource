@@ -1,9 +1,11 @@
+%%GUID()%%
 %%[
 SET @DCF_Code = RequestParameter('DCF_Code')
 SET @Membership_type = RequestParameter('Membership_type')
 ]%%
 %%=v(@DCF_Code)=%% 
 %%=v(@Membership_type)=%% 
+
 <script runat="server">
 
 Platform.Load("Core","1.1.1");
@@ -20,7 +22,9 @@ if (jsonObj.length > 0) {
       Platform.Variable.SetValue("@OrderId",item['OrderId']);
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
   </script> 
-
+  %%[
+  SET @ProductName = Lookup("Material_Information_DE","ProductName","Order_ID", @OrderId)
+  ]%%
   <div>
   資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
   </div>   
