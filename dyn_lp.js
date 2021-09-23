@@ -1,7 +1,5 @@
 <script runat="server">
-
 Platform.Load("Core","1.1.1");
-
 var json = Platform.Request.GetPostData();
 var jsonObj = Platform.Function.ParseJSON(json);
 
@@ -56,6 +54,6 @@ ENDIF
   <input type="submit" name="submit" value="1">
 </form> 
 
-
+v1
 </body>
 </html>
