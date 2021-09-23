@@ -22,7 +22,7 @@ if (products.length > 0) {
   資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
   </div>
 
-<script runat="server">
+<script>
   }
 } 
 else 
