@@ -46,7 +46,7 @@ ENDIF
 
 <h2>HTML Forms</h2>
 
-<form action="%%=RequestParameter('PAGEURL')=%%">
+<form action="https://cloud.amgenmail.com/Dynamic_CP">
   <label for="Full_name">Full_name:</label><br>
   <input type="text" name="Full_name"><br>
   <label for="EmailAddress">EmailAddress:</label><br>
