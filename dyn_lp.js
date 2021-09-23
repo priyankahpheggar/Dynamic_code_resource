@@ -32,7 +32,7 @@ SET @Membership_type = RequestParameter('Membership_type')
 SET @low = 11111
 SET @high = 99999
 SET @Order_ID = Random(@low,@high)
-IF RequestParameter('submit') == '1' THEN
+IF RequestParameter('submitted') == '1' THEN
 SET @Full_name = RequestParameter('Full_name')
 SET @EmailAddress = RequestParameter('EmailAddress')
 
@@ -51,7 +51,7 @@ ENDIF
   <input type="text" name="Full_name"><br>
   <label for="EmailAddress">EmailAddress:</label><br>
   <input type="text" name="EmailAddress"><br><br>
-  <input type="hidden" name="submit" value="1"/>
+  <input type="hidden" name="submitted" value="1"/>
   <input type="submit" name="submit" value="Submit">
 </form> 
 
