@@ -51,7 +51,8 @@ ENDIF
   <input type="text" name="Full_name"><br>
   <label for="EmailAddress">EmailAddress:</label><br>
   <input type="text" name="EmailAddress"><br><br>
-  <input type="submit" name="submit" value="1">
+  <input type="hidden" name="submit" value="1"/>
+  <input type="submit" name="submit" value="Submit">
 </form> 
 
 v1
