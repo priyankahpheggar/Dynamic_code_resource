@@ -4,29 +4,32 @@ SET @Membership_type = RequestParameter('Membership_type')
 ]%%
 %%=v(@DCF_Code)=%% 
 %%=v(@Membership_type)=%% 
-
 <script runat="server">
+
 Platform.Load("Core","1.1.1");
+
 var json = Platform.Request.GetPostData();
-var products = Platform.Function.ParseJSON(json);
+var jsonObj = Platform.Function.ParseJSON(json);
 
-if (products.length > 0) {
-  for (var i = 0; i < products.length; i++ ) {
+if (jsonObj.length > 0) {
 
-      var item = products[i];
+  for (var i = 0; i < jsonObj.length; i++ ) {
+
+      var item = jsonObj[i];
+
       Platform.Variable.SetValue("@OrderId",item['OrderId']);
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
-</script>
+  </script> 
 
-      <div>
+  <div>
   資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
-  </div>
-
-<script>
+  </div>   
+<script runat="server">
   }
-} 
-else 
-{
-  Write("no products found");
+
+} else {
+
+  Write("no products found")
+
 }
 </script>
