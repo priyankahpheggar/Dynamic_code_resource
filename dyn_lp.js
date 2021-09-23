@@ -20,9 +20,7 @@ if (jsonObj.length > 0) {
       Platform.Variable.SetValue("@OrderId",item['OrderId']);
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
   </script> 
-  %%[
-/* SET @ProductName = Lookup("Material_Information_DE","ProductName","Order_ID", @OrderId) */
-]%%
+ 
   <div>
   資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
   </div>   
