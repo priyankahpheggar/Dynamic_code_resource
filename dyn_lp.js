@@ -1,10 +1,13 @@
-
 %%[
 SET @DCF_Code = RequestParameter('DCF_Code')
 SET @Membership_type = RequestParameter('Membership_type')
+SET @low = 11111
+SET @high = 99999
+SET @Order_ID = Random(@low,@high)
 ]%%
 %%=v(@DCF_Code)=%% 
 %%=v(@Membership_type)=%% 
+%%=v(@Order_ID)=%% 
 
 <script runat="server">
 
@@ -22,9 +25,7 @@ if (jsonObj.length > 0) {
       Platform.Variable.SetValue("@OrderId",item['OrderId']);
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
   </script> 
-  %%[
-  SET @ProductName = Lookup("Material_Information_DE","ProductName","Order_ID", @OrderId)
-  ]%%
+ 
   <div>
   資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
   </div>   
