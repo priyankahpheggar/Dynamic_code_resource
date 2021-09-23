@@ -31,12 +31,15 @@ if (jsonObj.length > 0) {
 %%[
 SET @DCF_Code = RequestParameter('DCF_Code')
 SET @Membership_type = RequestParameter('Membership_type')
-SET @Full_name = RequestParameter('Full_name')
-SET @EmailAddress = RequestParameter('EmailAddress')
 SET @low = 11111
 SET @high = 99999
 SET @Order_ID = Random(@low,@high)
+IF RequestParameter('submit') == '1' THEN
+SET @Full_name = RequestParameter('Full_name')
+SET @EmailAddress = RequestParameter('EmailAddress')
+
 SET @Entry_DE = UpsertData("User_Material_Order_Entry_data",1,"Order_ID", @Order_ID,"Membership_type", @Membership_type,"Material_Name", @OrderId,"Quantity", @Quantity,"Full_name", @Full_name,"EmailAddress",@EmailAddress,"DCF_Code", @DCF_Code)
+ENDIF
 ]%%
 
 <!DOCTYPE html>
