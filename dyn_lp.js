@@ -21,9 +21,7 @@ if (jsonObj.length > 0) {
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
       
   </script> 
- %%[
- SET @Entry_DE = UpsertData("User_Material_Order_Entry_data",2,"Order_ID", @Order_ID,"Material_Name", @material_name,"Membership_type", @Membership_type,"Quantity", @Quantity,"Full_name", "Priyanka","EmailAddress","priyanka.padmanabha@indegene.com","DCF_Code", "12345")
- ]%%
+ 
   <div>
   資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
   </div>   
@@ -36,4 +34,8 @@ if (jsonObj.length > 0) {
 
 }
 </script>
+
+%%[
+ SET @Entry_DE = UpsertData("User_Material_Order_Entry_data",2,"Order_ID", @Order_ID,"Material_Name", @material_name,"Membership_type", @Membership_type,"Quantity", @Quantity,"Full_name", "Priyanka","EmailAddress","priyanka.padmanabha@indegene.com","DCF_Code", "12345")
+ ]%%
 
