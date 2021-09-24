@@ -17,7 +17,7 @@ if (jsonObj.length > 0) {
   for (var i = 0; i < jsonObj.length; i++ ) {
 
       var item = jsonObj[i];
-      Platform.Variable.SetValue("@material_name",item['OrderId']);
+      Platform.Variable.SetValue("@material_name",item['material_name']);
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
       
   </script> 
