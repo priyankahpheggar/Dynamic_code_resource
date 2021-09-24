@@ -17,12 +17,12 @@ if (jsonObj.length > 0) {
   for (var i = 0; i < jsonObj.length; i++ ) {
 
       var item = jsonObj[i];
-      Platform.Variable.SetValue("@OrderId",item['OrderId']);
+      Platform.Variable.SetValue("@material_name",item['OrderId']);
       Platform.Variable.SetValue("@Quantity",item['Quantity']);
       
   </script> 
  %%[
- SET @Entry_DE = UpsertData("User_Material_Order_Entry_data",1,"Order_ID", @Order_ID,"Membership_type", @Membership_type,"Material_Name", @OrderId,"Quantity", @Quantity,"Full_name", "Priyanka","EmailAddress","priyanka.padmanabha@indegene.com","DCF_Code", "12345")
+ SET @Entry_DE = UpsertData("User_Material_Order_Entry_data",1,"Order_ID", @Order_ID,"Membership_type", @Membership_type,"Material_Name", @material_name,"Quantity", @Quantity,"Full_name", "Priyanka","EmailAddress","priyanka.padmanabha@indegene.com","DCF_Code", "12345")
  ]%%
   <div>
   資材名 %%=v(@OrderId)=%%         部数 %%=v(@Quantity)=%%
