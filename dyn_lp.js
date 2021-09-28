@@ -1,3 +1,14 @@
+%%[
+/* IsExisting Email : START */
+SET @ExistingEmail = Lookup("Migraine_Control_College_Form","EmailAddress","EmailAddress", @EmailAddress)
+IF NOT EMPTY(@ExistingEmail) THEN
+      SET @IsExisting_err = 'true'
+ELSE  
+      SET @IsExisting_err = 'false'
+ENDIF
+/* IsExisting Email : END */
+]%%
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -176,7 +187,7 @@ padding: 1rem 4rem .7rem
     </ul>
   </div>
   <div class="contents em-mr form-fieldset-margin-md form-fieldset-position-row efo-off">
-    <form action="https://cloud.amgenmail.com/Migraine_ControlCollege_Confirmation" method="post" name="form1" enctype="multipart/form-data" class="formmailer-form " data-max-total-filesize="5242880" novalidate>
+    <form action="https://cloud.amgenmail.com/Migraine_ControlCollege_Confirmation" method="get" name="form1" enctype="multipart/form-data" class="formmailer-form " data-max-total-filesize="5242880" novalidate>
       <input type="hidden" name="key" value="84327af2140594" >
       <p class="form-description" style="text-align: center;"><font color="#00b0f0" size="5"><b>申込登録</b></font><font color="#c00000" size="1" style="margin-left: 1.5em;">*は必須項目です </font><br>
         <br>
@@ -381,7 +392,7 @@ padding: 1rem 4rem .7rem
             </div>
             <div class="col-md-12">
               <label for="event_name_6" class="form-label-radio-checkbox">
-                <input class="form-control" name="event_name" id="event_name_6" type="radio" value="5" required>
+                <input class="form-control" name="event_name" id="event_name_6" type="radio" value="6" required>
                 その他</label>
             </div>
           </div>
@@ -628,6 +639,25 @@ padding: 1rem 4rem .7rem
   if (conEmailLen > 0) return matchEmails(email1, email2);
    }
  );
+
+ %%[IF @IsExisting_err == 'true' THEN]%%
+ /* IsExisting Email :: START */
+    //preventing from form submission if email already exist
+   if ($('input[name="select_info"]:checked').val() == 'Register_member_email_address')
+    {
+        $("#EmailAlreadyExists").show();
+        $("#registration-form").submit(function(e){e.preventDefault();});
+        return false;
+    }
+
+    //redirecting to thankyou by hardcoding
+    if ($('input[name="select_info"]:checked').val() == 'not_register_member')
+    {
+        window.location.href = 'https://www.aimovig.jp/';
+        return true;
+    }                           
+  /* IsExisting Email :: END */
+%%[ENDIF]%%
 
  function showErr(input, error) {
    input.closest('.form-fieldgroup').find('.invalid-feedback').text(error);
