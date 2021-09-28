@@ -1,5 +1,21 @@
-%%[
-  SET @url = Concat('https://cloud.amgenmail.com/FORM1_test?ee=true&email_name=',@EmailAddress_E,'&gender=',@Gender_E,'&age=',@Age_E,'&residence=',@Residence_E,'&event_name=',@Q5_E,'&headache_freq=',@Q6_E,'&doctor_diagnose=',@Q7_E,'&headache_specialist=',@Q8_E,'&questions_textarea=',@Q9_E)
-       Redirect(@url)
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#x1").submit(function(){
+    alert("Submitted");
+  });
+});
+</script>
+</head>
+<body>
 
-]%%
+<form action="%%=RedirectTo(CloudPagesURL(2055,'email_name',@EmailAddress,'gender',@Gender,'age',@Age,'residence',@Residence,'event_name',@Q5,'headache_freq',@Q6,'doctor_diagnose',@Q7,'headache_specialist',@Q8,'questions_textarea',@Q9))=%%" method="post" name="x1" id="x1" enctype="multipart/form-data" class="formmailer-form " data-max-total-filesize="5242880" novalidate>
+    <input type="hidden" name="x1" value="1" />
+      </form>
+
+
+</body>
+</html>
