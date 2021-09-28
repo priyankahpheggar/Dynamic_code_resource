@@ -1,14 +1,3 @@
-%%[
-/* IsExisting Email : START */
-SET @ExistingEmail = Lookup("Migraine_Control_College_Form","EmailAddress","EmailAddress", @EmailAddress)
-IF NOT EMPTY(@ExistingEmail) THEN
-      SET @IsExisting_err = 'true'
-ELSE  
-      SET @IsExisting_err = 'false'
-ENDIF
-/* IsExisting Email : END */
-]%%
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -639,25 +628,6 @@ padding: 1rem 4rem .7rem
   if (conEmailLen > 0) return matchEmails(email1, email2);
    }
  );
-
- %%[IF @IsExisting_err == 'true' THEN]%%
- /* IsExisting Email :: START */
-    //preventing from form submission if email already exist
-   if ($('input[name="select_info"]:checked').val() == 'Register_member_email_address')
-    {
-        $("#EmailAlreadyExists").show();
-        $("#registration-form").submit(function(e){e.preventDefault();});
-        return false;
-    }
-
-    //redirecting to thankyou by hardcoding
-    if ($('input[name="select_info"]:checked').val() == 'not_register_member')
-    {
-        window.location.href = 'https://www.aimovig.jp/';
-        return true;
-    }                           
-  /* IsExisting Email :: END */
-%%[ENDIF]%%
 
  function showErr(input, error) {
    input.closest('.form-fieldgroup').find('.invalid-feedback').text(error);
