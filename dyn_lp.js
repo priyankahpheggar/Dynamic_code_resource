@@ -10,7 +10,7 @@
 </script>
 </head>
 <body>
-<form id="x1" action="http://www.example.com/page2.html" method="post">
+<form id="x1" action="http://www.example.com/page1.html" method="post">
  <input type="hidden" name="x1" value="x1">test
 </form> 
 </body>
