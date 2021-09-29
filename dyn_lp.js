@@ -1,5 +1,35 @@
-%%[
-    SET @url = Concat('https://cloud.amgenmail.com/Migraine_ControlCollege_Application?ee=true&Q1=',@EmailAddress_E,'&Q2=',@Gender_E,'&Q3=',@Age_E,'&Q4=',@Residence_E,'&Q5=',@Q5_E,'&Q6=',@Q6_E,'&Q7=',@Q7_E,'&Q8=',@Q8_E,'&Q9=',@Q9_E)
-       SET @Eurl = URLEncode(@url)
-       Redirect(@Eurl)
-]%%
+%%[IF RequestParameter(x == '1')]%%
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+  $(document).ready(function(){
+  $("#x1").submit();
+});
+</script>
+</head>
+<body>
+<form id="x1" action="http://www.example.com/page1.html" method="post">
+ <input type="hidden" name="x1" value="x1">test
+</form> 
+</body>
+</html>
+%%[ELSE]%%
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+  $(document).ready(function(){
+  $("#x1").submit();
+});
+</script>
+</head>
+<body>
+<form id="x1" action="http://www.example.com/page2.html" method="post">
+ <input type="hidden" name="x1" value="x1">test
+</form> 
+</body>
+</html>
+%%[ENDIF]%%
