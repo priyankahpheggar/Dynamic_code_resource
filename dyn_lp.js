@@ -1,35 +1,31 @@
-%%[IF RequestParameter('x') == '1' THEN]%%
 <!DOCTYPE html>
-<html>
-<head>
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-<script>
-  $(document).ready(function(){
-  $("#x1").submit();
-});
-</script>
-</head>
-<body>
-<form id="x1" action="http://www.example.com/page1.html" method="post">
- <input type="hidden" name="x1" value="x1">test
-</form> 
-</body>
+<html lang="en">
+
+<p>Select a new car from the list.</p>
+
+
+<select id="mySelect" onchange="myFunction()">
+  <option value="Audi">Audi</option>
+  <option value="BMW">BMW</option>
+  <option value="Mercedes">Mercedes</option>
+  <option value="Volvo">Volvo</option>
+</select>
+
+
+   <script runat="server">
+                Platform.Load("core","1.1");
+      function myFunction() {
+    var Addrecords =  [
+      {Email:"raja.karuppaiya@indegene.com",
+       FirstName:"raja"},
+            ];
+
+var targetDE = DataExtension.Init("Test_Internal_Proofing_DE");
+targetDE.Rows.Add(Addrecords);
+}
+    
+  </script>
+
+ 
+
 </html>
-%%[ELSE]%%
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-<script>
-  $(document).ready(function(){
-  $("#x1").submit();
-});
-</script>
-</head>
-<body>
-<form id="x1" action="http://www.example.com/page2.html" method="post">
- <input type="hidden" name="x1" value="x1">test
-</form> 
-</body>
-</html>
-%%[ENDIF]%%
