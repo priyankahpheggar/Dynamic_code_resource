@@ -1,8 +1,3 @@
 %%[
-SET @x = InsertData('Test_Internal_Proofing_DE','FirstName','raja','Email','raja.karuppaiya@indegene.com')
+SET @x = InsertData('Test_Internal_Proofing_DE','Email','raja.karuppaiya@indegene.com','FirstName','raja','LastName','Karuppaiya')
 ]%%
- 
-
-
-
-
