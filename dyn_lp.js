@@ -1,6 +1,6 @@
 %%[
-SET @low = 1111aaa
-SET @high = 9999zzz
+SET @low = 1111
+SET @high = 9999
 SET @Order_ID = Random(@low,@high)
 ]%%
 %%=v(@Order_ID)=%%
