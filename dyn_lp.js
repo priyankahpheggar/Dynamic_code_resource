@@ -1,6 +1,6 @@
 %%[
-SET @low = 1111111
-SET @high = 9999999
-SET @Order_ID = Random(@low,@high)
+set @guid = Replace(GUID(),'-','')
+set @charString = Substring(@guid,1,7)
 ]%%
-%%=v(@Order_ID)=%%
+
+string: %%=v(@charString)=%%
