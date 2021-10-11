@@ -445,15 +445,16 @@ p.para-right {
                                     <label for="email">メールアドレス</label>
                                 </div>
                                 <div class="input">
-                                    <input type="email" name="email" id="email" pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" value="%%=v(@EmailAddress)=%%" readonly>
+                                    <input type="email" name="email" id="email" value="%%=v(@EmailAddress)=%%" readonly>
                                 </div>
                             </div>
        <div class="row">
                                 <div class="label">
+                                
                                     <label for="email">メールアドレス確認</label>
                                 </div>
                                 <div class="input">
-                                    <input type="email" name="email" id="email" pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" value="%%=v(@EmailAddress)=%%" readonly>
+                                    <input type="email" name="email" id="email" value="%%=v(@EmailAddress)=%%" readonly>
                                 </div>
                             </div>
                             <div class="row">
