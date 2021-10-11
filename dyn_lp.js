@@ -510,10 +510,10 @@ p.para-right {
                         </form>
                     </div>
                 </div>
-           
+            <form action="https://cloud.amgenmail.com/Materialorder_Completionscreen" method="post" id="form2"></form> 
                 <div class="flex">
-                    <a class="btn" href="#" id="btn1"><span class="txt-ct">お届け先を修正する</span><span class="arrow">&#x203A;</span></p>
-                    <a class="btn" href="#" id="btn2"><span class="txt-ct">この内容で確定する</span> <span class="arrow">&#x203A;</span></p>
+                    <a class="btn" href="#" id="btn1"><span class="txt-ct">お届け先を修正する</span><span class="arrow">&#x203A;</span></a>
+                    <a class="btn" href="#" id="btn2"><span class="txt-ct">この内容で確定する</span> <span class="arrow">&#x203A;</span></a>
                 </div>
                 
             </div>
@@ -535,5 +535,19 @@ p.para-right {
             </div>
         </div>
     </body>
-    
+    <script>
+        $(document).ready(function(){
+            $(function() {
+           $('#btn1').click(function(e) {
+                e.preventDefault();
+                $("#form2").submit();
+            });
+        
+           $('#btn2').click(function(e) {
+                e.preventDefault();
+                $("#form1").submit();
+            });
+        });
+        });
+        </script>
 </html>
