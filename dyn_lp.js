@@ -2,7 +2,7 @@
 SET @Last_name = RequestParameter('surname')
 SET @First_name = RequestParameter('name')
 SET @Full_name = Concat(@First_name, " ", @Last_name)
-SET @EmailAddress = RequestParameter('email')
+SET @EmailAddress = 'z@gmail.com'
 SET @Hospital_Name = RequestParameter('hospital_name')
 SET @Postal_Code = RequestParameter('postcode')
 SET @Prefectures = RequestParameter('prefectures')
@@ -450,7 +450,7 @@ p.para-right {
                             </div>
        <div class="row">
                                 <div class="label">
-                                
+
                                     <label for="email">メールアドレス確認</label>
                                 </div>
                                 <div class="input">
