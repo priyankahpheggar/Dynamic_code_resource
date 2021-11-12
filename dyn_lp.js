@@ -1,5 +1,5 @@
 %%[
-    SET @amount_of_deliveries = '123'
+    SET @amount_of_deliveries = '12356767'
    SET @sl = Length(@amount_of_deliveries)
  IF @sl > 3 THEN
 
