@@ -1,6 +1,9 @@
 %%[
-SET @guid = Replace(GUID(),'-','')
-SET @Order_ID = Substring(@guid,1,9)
-SET @Order_ID = Concat("AMV",@Order_ID)
+    SET @amount_of_deliveries = '200476'
+  SET @sl = Length(@amount_of_deliveries)
+                SET @l = Substring(@amount_of_deliveries,0,Subtract(@sl,3))
+                SET @r = Substring(@amount_of_deliveries,Subtract(@sl,3),3)
+                 SET @amount_of_deliveries = Concat(@l,',',@r)
 ]%%
-%%=v(@Order_ID)=%%
+%%=v(@amount_of_deliveries)=%%
+
