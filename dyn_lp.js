@@ -9,8 +9,9 @@
 
                 IF @sl > 6 THEN
                 SET @p1 = Substring(@amount_of_deliveries,0,Subtract(@sl,3))
-                SET @s1 = Substring(@p1,0,Subtract(@sl,3))
-                SET @s2 = Substring(@p1,Subtract(@sl,3),3)
+                 SET @L2 = Length(@p1)
+                SET @s1 = Substring(@p1,0,Subtract(@L2,3))
+                SET @s2 = Substring(@p1,Subtract(@L2,3),3)
 
 
                 SET @s3 = Substring(@amount_of_deliveries,Subtract(@sl,3),3)
@@ -22,3 +23,4 @@ ENDIF
 %%=v(@amount_of_deliveries)=%%
 
 
+10056777
