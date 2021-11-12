@@ -1,3 +1,5 @@
 %%[
-Output(concat('',LongSFID('0032800000VgmM6')))
+SET @guid = Replace(GUID(),'-','')
+SET @Order_ID = Substring(@guid,1,6)
+SET @Order_ID = Concat("AMV",@Order_ID)
 ]%%
