@@ -1,26 +1,24 @@
 %%[
-    SET @amount_of_deliveries = RequestParameter('x')
-   SET @sl = Length(@amount_of_deliveries)
- IF @sl > 3 THEN
+    SET @amount = RequestParameter('x')
+    SET @L1 = Length(@amount)
+    
+    IF @L1 > 6 THEN
+        SET @l = Substring(@amount,1,Subtract(@L1,3))   //12345
+        SET @L2 = Length(@l)
+        SET @lp1 = Substring(@l,1,Subtract(@L2,3))   //12 
+        SET @rp1 = Substring(@l,Subtract(@L2,2),3)  //345
 
-                SET @l = Substring(@amount_of_deliveries,0,Subtract(@sl,3))
-                SET @r = Substring(@amount_of_deliveries,Subtract(@sl,3),3)
-                SET @amount_of_deliveries = Concat(@l,',',@r)
+        SET @r = Substring(@amount,Subtract(@L1,2),3)   //678
+        SET @FS = Concat(@lp1,',',@rp1,',',@r)
+    
+    ELSEIF @L1 > 3 THEN
+        SET @l = Substring(@amount,1,Subtract(@L1,3))   //12345 
+        SET @r = Substring(@amount,Subtract(@L1,2),3)   //678
+        SET @FS = Concat(@l,',',@r)
 
-                IF @sl > 6 THEN
-                SET @p1 = Substring(@amount_of_deliveries,0,Subtract(@sl,3))
-                 SET @L2 = Length(@p1)
-                SET @s1 = Substring(@p1,0,Subtract(@L2,3))
-                SET @s2 = Substring(@p1,Subtract(@L2,3),3)
+    ENDIF
 
 
-                SET @s3 = Substring(@amount_of_deliveries,Subtract(@sl,3),3)
-                SET @amount_of_deliveries = Concat(@s1,',',@s2,',',@s3)
-                ENDIF
-ENDIF
-  
 ]%%
-%%=v(@amount_of_deliveries)=%%
-
-
-10056777
+<br>
+Output = %%=v(@FS)=%%
