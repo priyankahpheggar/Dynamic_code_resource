@@ -1,4 +1,4 @@
 %%[
-SET @amount = '100'
+SET @amount = RequestParameter('X')
 OutputLine(FormatCurrency(@amount,'en-US')) 
 ]%%
