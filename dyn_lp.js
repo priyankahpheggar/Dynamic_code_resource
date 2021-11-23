@@ -1,4 +1,4 @@
 %%[
 SET @amount = RequestParameter('X')
-OutputLine(FormatCurrency(@amount,'ja-jp')) 
+OutputLine(FormatCurrency(@amount,'en-in')) 
 ]%%
