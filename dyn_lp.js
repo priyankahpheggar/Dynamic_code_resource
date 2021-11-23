@@ -3,7 +3,7 @@
 SET @cars = "Alto   Tiago   Swift   Duster"
 SET @query = "Swift"
 IF (IndexOf(@cars,@query) > 0) THEN
-Output(concat("Already exist"))
+Output(concat("Already exist ",IndexOf(@cars,@query)))
 ELSE
 Output(concat("Not exist"))
 ENDIF
