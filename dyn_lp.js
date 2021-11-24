@@ -206,7 +206,6 @@ Aimovig.jpに会員登録していただくと、次回よりお届け先のご�
       <form action="https://enbpreu204n88.x.pipedream.net" id="form1" method="post">
   <input type="hidden" name="FirstName" value="%%=v(RequestParameter('FirstName'))=%%"><br>
   <input type="hidden" name="LastName" value="%%=v(RequestParameter('LastName'))=%%"><br>
-  <input type="submit" value="Go to Website">
 </form> 
       <hr />
       <div class="footer-flex">
