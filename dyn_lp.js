@@ -1,5 +1,6 @@
 %%[
-  SET @amount = '6.89'
-  SET @amount = FormatCurrency(@amount,'en-US')
-  OutputLine(Concat(@amount,' is a success!')) 
+  Set @date = '20211117131138'
+  Set @format = FormatDate(@date,'YYYY-MM-DD','HH:MM:SS.MMM','en-US')
 ]%%
+
+
