@@ -4,7 +4,7 @@ SET @decrypt_dcf = Base64Decode(@dcf)
 SET @mail_seq = RequestParameter('mail_seq')
 SET @site = "AMV"
 
-IF @dcf != "" THEN
+IF not empty (@dcf) THEN
 
 SET @TokenStatus = "True"
 SET @Activate_flag = "1"
