@@ -5,9 +5,9 @@ SET @mail_seq = RequestParameter('mail_seq')
 SET @site = "AMV"
 
 IF not empty (@dcf) THEN
-OutputLine(Concat('DCF member')) 
+OutputLine(Concat(@dcf,'DCF member')) 
 ELSE
-OutputLine(Concat('NON-DCF member')) 
+OutputLine(Concat(@dcf,'NON-DCF member')) 
 ENDIF
   
 ]%% 
