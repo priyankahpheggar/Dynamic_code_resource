@@ -1,3 +1,7 @@
+<script runat="server">
+Platform.Load("Core","1.1");
+try{
+</script>
 %%[
 SET @dcf = '198970'
 SET @mail_seq = 'testpriyanka.padmanabha@indegene.com'
@@ -40,3 +44,6 @@ ELSE
 OutputLine(Concat(@dcf,'NON-DCF member')) 
 ENDIF 
 ]%% 
+<script runat="server">
+} catch(Error) { Write(Stringify(Error)); }
+</script>
