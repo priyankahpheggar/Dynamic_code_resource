@@ -15,6 +15,9 @@ SET @Registration_date = DateAdd(@Registration_date, 15, "H")
 SET @blank = '-'
 
 SET @dcf_compare = LookupRows("MASTER_Account","AABP_DCF_Doctor_Code",@dcf)
+IF RowCount(@dcf_compare) < 1 THEN
+Redirect('http://example.com?error.html?err=NOrowsInMASTER_AccountDE')
+ENDIF
 SET @row = row(@dcf_compare,1)
 SET @FirstName = field(@row,"First_Name")
 IF @FirstName == '' THEN
