@@ -1,5 +1,5 @@
 %%[
-SET @fruits = "Apple | Banana | Orange"
-SET @Row = IndexOf(@fruits,'Apple')
-OutputLine(Concat(@Row,' is exist in the list!')) 
+SET @money = "$6.96"
+SET @moneyformat = FormatCurrency(@money,'en-US')
+OutputLine(Concat(@moneyformat,' is formatted now')) 
 ]%%
