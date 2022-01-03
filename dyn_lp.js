@@ -1,6 +1,4 @@
 %%[
-SET @today = Now()
-SET @month = Datepart(@today,'M')
+SET @fcm = Concat("01","/",Datepart(Now(),'M'),"/",Datepart(Now(),'Y'))
 ]%%
-%%=v(@today)=%%<br>
-%%=v(@month)=%%<br>
+%%=v(@fcm)=%%<br>
