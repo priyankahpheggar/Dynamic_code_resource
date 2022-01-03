@@ -1,5 +1,5 @@
 %%[
-SET @money = RequestParameter('X')
-SET @moneyformat = FormatCurrency(@money,'en-US')
+SET @expirationdate = '31/01/2021'
+SET @moneyformat = DateAdd(@expirationdate, '30','D')
 ]%%
 %%=v(@moneyformat)=%%
