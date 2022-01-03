@@ -1,5 +1,7 @@
 %%[
-SET @expirationdate = "31-JAN-2022"
+SET @today = Now()
+SET @month = Datepart(@today,'M')
 SET @moneyformat = DateAdd(@expirationdate, -30,"D")
 ]%%
-%%=v(@moneyformat)=%%
+%%=v(@today)=%%<br>
+%%=v(@month)=%%<br>
