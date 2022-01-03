@@ -1,6 +1,6 @@
 %%[
-SET @fcm = Concat("01","/",DateAdd(Now(), 1,'M'),"/",Datepart(Now(),'Y'))
-SET @ldp = DateAdd(@fcm, '-1','D')
+SET @fcm = Concat("01","/",DateAdd(Now(), 1, "M"),"/",Datepart(Now(),"Y"))
+SET @ldp = DateAdd(@fcm, -1,'D')
 
 
 ]%%
