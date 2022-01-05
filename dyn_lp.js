@@ -1,6 +1,6 @@
 %%[
 FOR @i = 10 downto 1 DO 
-FOR @j = 10 downto @i DO 
+FOR @j = @i downto 1 DO 
 Output(Concat('*'))
 NEXT @j
 Output(Concat('<br>'))
