@@ -1,9 +1,5 @@
 %%[
-SET @min = "1"
-SET @max = "5"
-for @number = @min to @max do
+FOR @i = 1 TO 10 DO 
+Output(Concat(@i,'<br>'))
+NEXT @i
 ]%%
-%%=v(@number)=%%<br>
-%%[next @number]%%
-
-
