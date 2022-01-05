@@ -1,7 +1,9 @@
 %%[
-SET @fcm =  dateadd(dd,-90,getdate())
-
+SET @min = "1"
+SET @max = "5"
+for @number = @min to @max do
 ]%%
-%%=v(@fcm)=%%<br>
-%%=v(@ldp)=%%<br>
+%%=v(number)=%%
+%%[next]%%
+
 
