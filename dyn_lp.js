@@ -1,4 +1,4 @@
 %%[
-    SET @today = "1/5/2022 1:4:11 PM"
+    SET @today = DateAdd(Now(), '-4','h')
     OutputLine(v(@today))
 ]%%
