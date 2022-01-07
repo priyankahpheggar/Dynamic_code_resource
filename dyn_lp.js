@@ -4,12 +4,12 @@ SET @row = BuildRowsetFromString(@car, ',')
 SET  @RowCount = RowCount(@row)
 IF @RowCount > 1 THEN
 For @i = 1 to @RowCount do
-    set @row = row(@row, @i) /* get row based on counter */
+    set @row = row(@row, @i)
     set @car = field(@row,1)
 
     ]%%
 
-    <br>Row %%=v(@i)=%%, car: %%=v(@car)=%%
+    Row %%=v(@i)=%%, car: %%=v(@car)=%%
 
     %%[
 
@@ -20,5 +20,5 @@ For @i = 1 to @RowCount do
 No rows found
 
 %%[ endif ]%%
-]%%
+
 
