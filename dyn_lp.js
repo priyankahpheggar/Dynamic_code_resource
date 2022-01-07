@@ -1,10 +1,10 @@
 %%[
-SET @car = "Alto,waganor,duster"
-SET @row = BuildRowsetFromString(@car, ',')
-SET  @RowCount = RowCount(@row)
+SET @cars = "Alto,waganor,duster"
+SET @rows = BuildRowsetFromString(@cars, ',')
+SET  @RowCount = RowCount(@rows)
 IF @RowCount > 1 THEN
 For @i = 1 to @RowCount do
-    set @row = row(@row, @i)
+    set @row = row(@rows, @i)
     set @car = field(@row,1)
 ]%%
 
