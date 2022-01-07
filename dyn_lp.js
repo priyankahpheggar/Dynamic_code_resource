@@ -6,19 +6,15 @@ IF @RowCount > 1 THEN
 For @i = 1 to @RowCount do
     set @row = row(@row, @i)
     set @car = field(@row,1)
-
-    ]%%
+]%%
 
     Row %%=v(@i)=%%, car: %%=v(@car)=%%
 
-    %%[
-
-  next @i ]%%
-
-%%[ else ]%%
+    %%[next @i 
+    else]%%
 
 No rows found
 
-%%[ endif ]%%
+%%[endif]%%
 
 
