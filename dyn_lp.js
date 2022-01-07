@@ -1,5 +1,5 @@
 %%[
 SET @flower = "Rose | Jasmine | sunflower"
-OutputLine(Concat(IndexOf(@flower,'Jasmine')))
+OutputLine(IndexOf(@flower,'Jasmine'))
 ]%%
 
