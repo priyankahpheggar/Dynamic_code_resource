@@ -8,7 +8,7 @@ For @i = 1 to @RowCount do
     set @car = field(@row,1)
 ]%%
 
-    Row %%=v(@i)=%%, car: %%=v(@car)=%%
+    Row %%=v(@i)=%%, car: %%=v(@car)=%%<br>
 
     %%[next @i 
     else]%%
