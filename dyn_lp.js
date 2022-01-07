@@ -1,7 +1,5 @@
 %%[
-
-var @getRequest
-set @getRequest = TreatAsContent(HTTPGet("https://httpbin.org/html"))
-
+SET @flower = "Rose | Jasmine | sunflower"
+OutputLine(Concat(IndexOf(@flower,'Jasmine'),"exist"))
 ]%%
-%%=v(@getRequest)=%%
+
