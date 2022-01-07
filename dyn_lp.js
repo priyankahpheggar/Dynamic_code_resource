@@ -1,5 +1,4 @@
 %%[
-SET @flower = "Rose | Jasmine | sunflower"
-OutputLine(IndexOf(@flower,'Jasmine'))
+OutputLine(BuildRowsetFromString('Rose | Jasmine | sunflower', '|'))
 ]%%
 
