@@ -1,6 +1,6 @@
 %%[
 SET @num = '8'
-IF MOD(@num,2) = 1 THEN
+IF MOD(@num,2) == 1 THEN
     SET @color = 'Red'
     ELSE
     SET @color = 'white'
