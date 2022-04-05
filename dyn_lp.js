@@ -15,5 +15,5 @@ try {
   Write("<br>e: " + Stringify(e));
 
 }
-
+Redirect("http://www.example.com",true); 
 </script>
