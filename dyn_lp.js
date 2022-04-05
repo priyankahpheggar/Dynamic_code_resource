@@ -4,7 +4,7 @@ Platform.Load("Core","1.1.1");
 
 var url = 'https://eng73yr5z2m1w.x.pipedream.net';
 var contentType = 'application/json';
-var payload = '{"firstname":"Priyanka","lastname":"HP"}';
+var payload = '{"First_Name":"'+Request.GetQueryStringParameter("FN")+'"}';
 
 try {
 
