@@ -8,7 +8,8 @@ var payload = '{"First_Name":"'+Request.GetQueryStringParameter("FN")+'"}';
 
 try {
 
-   var Response = HTTP.Post(url, contentType, payload);
+   /* var Response = HTTP.Post(url, contentType, payload); */
+   var response = HTTP.Get(url, headerNames, headerValues);
 
 } catch (e) {
 
