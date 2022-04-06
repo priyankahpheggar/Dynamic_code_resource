@@ -2,7 +2,7 @@
 
 Platform.Load("Core","1.1.1");
 
-var url = 'https://eng73yr5z2m1w.x.pipedream.net';
+var url = 'https://ng-1011-localdev.cm01sc.dev.localsc.dev.local.cm.aimovig.jp/api/sitecore/FloatingMenu/M3AutoPopulate?fName=sowmya&lName=mundra';
 var contentType = 'application/json';
 var payload = '{"First_Name":"'+Request.GetQueryStringParameter("FN")+'"}';
 
@@ -15,5 +15,4 @@ try {
   Write("<br>e: " + Stringify(e));
 
 }
-Redirect("http://www.example.com",true); 
 </script>
