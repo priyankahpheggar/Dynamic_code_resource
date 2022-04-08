@@ -1,5 +1,5 @@
 %%[
-  SET @product_name = 'Lumakras'
+  SET @product_name = 'BLN'
   IF @product_name == 'Aimovig' THEN
   SET @site_name = 'アイモビーグ.jp'
   ELSEIF @product_name == 'Lumakras' THEN
