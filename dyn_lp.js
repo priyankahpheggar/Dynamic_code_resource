@@ -1,4 +1,7 @@
 
-%%=FormatDate('Thursday, June 30, 2022 9:30 AM', "DD/MMM/YYYY")=%%
+%%[
+SET @date = '7/7/2022 6:30:00 AM'
+SET @date = DateParse(@date)
+]%%
 
-
+%%=v(@date)=%%
