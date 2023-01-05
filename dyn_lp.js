@@ -1,7 +1,7 @@
 
 %%[
-SET @date = '7/7/2022 6:30:00 AM'
-SET @date = DateParse(@date)
+    SET @nowGMT = DateAdd(Now(), 9, "H")
+    SET @formattedUTCDate = Format(@nowGMT, "yyyy-MM-ddTHH:mm:ssZ", "Date")
 ]%%
 
-%%=v(@date)=%%
+%%=v(@formattedUTCDate)=%%
